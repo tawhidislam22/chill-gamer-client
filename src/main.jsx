@@ -14,6 +14,9 @@ import Resister from './Components/Resister/Resister.jsx';
 import AllReviews from './Components/AllReviews/AllReviews.jsx';
 import AddReviews from './Components/AddReviews/AddReviews.jsx';
 import MyReviews from './Components/MyReviews/MyReviews.jsx';
+import AuthProvider from './Components/AuthProvider/AuthProvider.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +50,9 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
+    <ToastContainer />
   </StrictMode>,
 )
