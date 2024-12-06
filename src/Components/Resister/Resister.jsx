@@ -16,6 +16,8 @@ const Resister = () => {
         const from = e.target;
         const email = from.email.value;
         const password = from.password.value
+        const name=from.name.value;
+        const photo=from.photo.value;
         const terms = from.terms.checked
         if (!terms) {
             setErrorMessage("Please accept our terms and condition")
@@ -48,9 +50,19 @@ const Resister = () => {
         createUser(email, password)
             .then(res => {
                 setSuccess(true)
+                const creationAt=res.user.metadata.creationTime;
                 sendEmailVerification(auth.currentUser)
                     .then(() => {
-
+                        const newUser={name,email,photo,creationAt}
+                        fetch('http://localhost:5000/users',{
+                            method:"POST",
+                            headers:{
+                                "content-type":"application/json"
+                            },
+                            body:JSON.stringify(newUser)
+                        })
+                        .then(res=>res.json())
+                        .then(data=>console.log(data))
                     })
                 from.reset()
                 navigate('/')

@@ -4,7 +4,7 @@ import { useContext, useRef, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase.init";
-
+import { toast } from "react-toastify";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
@@ -31,15 +31,26 @@ const Login = () => {
     const handleForgetPassword=()=>{
         const email=emailRef.current.value;
         if(!email){
-            setError('Please provided a valid email')
+            setErrorMessage('Please provided a valid email')
         }
         else{
             sendPasswordResetEmail(auth,email)
             .then(()=>{
-                alert("password reset email send")
+                toast.error('password reset email send', {
+                    position: "top-center",
+                    autoClose: 1000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+    
+                });
+                
             })
             .catch(error=>{
-                setError(error.message)
+                setErrorMessage(error.message)
             })
         }
     }
@@ -66,13 +77,13 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+                            <input type="email" ref={emailRef} name="email" placeholder="email" className="input input-bordered" required />
                         </div>
                         <div className="form-control relative">
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password" type={showPassword ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
+                            <input name="password"  type={showPassword ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
