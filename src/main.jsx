@@ -17,6 +17,8 @@ import MyReviews from './Components/MyReviews/MyReviews.jsx';
 import AuthProvider from './Components/AuthProvider/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import ReviewDetails from './Components/ReviewDetail/ReviewDetails.jsx';
+import UpdateReview from './Components/UpdateReview/UpdateReview.jsx';
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,16 @@ const router = createBrowserRouter([
       {
         path:"/myreviews",
         element:<MyReviews></MyReviews>
+      },
+      {
+        path:"/details/:id",
+        element:<ReviewDetails></ReviewDetails>,
+        loader:(params)=>fetch(`http://localhost:5000/allgames/${params.id}`)
+      },
+      {
+        path:"/update/:id",
+        element:<UpdateReview></UpdateReview>,
+        loader:(params)=>fetch(`http://localhost:5000/allgames/${params.id}`)
       }
     ]
   },
