@@ -21,6 +21,7 @@ const Navbar = () => {
                 <NavLink className="text-lg font-semibold" to='/allreviews'><li><a>All Reviews</a></li></NavLink>
                 <NavLink className="text-lg font-semibold" to='/addreviews'><li><a>Add Review</a></li></NavLink>
                 <NavLink className="text-lg font-semibold" to='/myreviews'><li><a>My Reviews </a></li></NavLink>
+                <NavLink className="text-lg font-semibold" to='/mywatchlist'><li><a>Game WatchList </a></li></NavLink>
             </> : <>
                 <NavLink className="text-lg font-semibold" to='/login'><li><a>Login</a></li></NavLink>
                 <NavLink className="text-lg font-semibold" to='/resister'><li><a>Resister</a></li></NavLink>

@@ -21,6 +21,7 @@ import ReviewDetails from './Components/ReviewDetail/ReviewDetails.jsx';
 import UpdateReview from './Components/UpdateReview/UpdateReview.jsx';
 import Home from './Components/Home/Home.jsx';
 import GameDetails from './Components/GameDetails/GameDetails.jsx';
+import GameWatchList from './Components/GameWatchList/GameWatchList.jsx';
 
 
 const router = createBrowserRouter([
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
       {
         path:"/myreviews",
         element:<MyReviews></MyReviews>
+      },
+      {
+        path:"/mywatchlist",
+        element:<GameWatchList></GameWatchList>
       },
       {
         path:"/details/:id",

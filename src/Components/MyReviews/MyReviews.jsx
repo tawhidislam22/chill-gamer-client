@@ -5,13 +5,13 @@ import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import MyReview from './MyReview';
-
+import Swal from "sweetalert2";
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthContext);
-  
+  const navigate=useNavigate()
   useEffect(() => {
     setLoading(true);
     fetch('http://localhost:5000/allgames')
@@ -27,7 +27,40 @@ const MyReviews = () => {
   }, []);
 
   const userReviews = user ? reviews.filter((review) => review.email === user.email) : [];
-
+  const handleDelete = id=> {
+        
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+  }).then((result) => {
+      if (result.isConfirmed) {
+        
+          fetch(`http://localhost:5000/allgames/${id}`, {
+              method: "DELETE"
+          })
+              .then(res => res.json())
+              .then(data => {
+                  if (data.deletedCount > 0) {
+                      const newReviews=reviews.filter(review=>review._id!==id)
+                      setReviews(newReviews)
+                      Swal.fire({
+                          title: "Deleted!",
+                          text: "Your file has been deleted.",
+                          icon: "success"
+                      });
+                  }
+              })
+      }
+  });
+    
+      
+      
+  };
   
 
   if (loading) {
@@ -48,9 +81,45 @@ const MyReviews = () => {
       {userReviews.length === 0 ? (
       <p className="text-center">You have no reviews yet.</p>
     ) : (
-      userReviews.map((userReview) => (
-        <MyReview key={userReview._id} userReview={userReview} reviews={reviews}></MyReview>
-      ))
+      <div className="overflow-x-auto">
+          <table className="min-w-full bg-white shadow-md rounded">
+            <thead>
+              <tr>
+                <th className="px-4 py-2 border">Game Title</th>
+                <th className="px-4 py-2 border">Rating</th>
+                <th className="px-4 py-2 border">Year</th>
+                <th className="px-4 py-2 border">Genre</th>
+                <th className="px-4 py-2 border">Actions</th>
+              </tr>
+            </thead>
+             <tbody>
+            {userReviews.map((review) => (
+              <tr key={review.id} className="hover:bg-gray-100">
+                <td className="px-4 py-2 border">{review.title}</td>
+                <td className="px-4 py-2 border">{review.rating}</td>
+                <td className="px-4 py-2 border">{review.year}</td>
+                <td className="px-4 py-2 border">{review.genre}</td>
+                <td className="px-4 py-2 border">
+                  <button
+                    onClick={() => navigate(`/update/${review._id}`)}
+                    className="bg-green-500 text-white px-4 py-2 rounded mr-2 hover:bg-green-600"
+                  >
+                    Update
+                  </button>
+                  <button
+                    onClick={() => handleDelete(review._id)}
+                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          </table>
+        </div>
+
+      
     )}
     </div>
   );
