@@ -1,8 +1,8 @@
 
 import React from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+// import Slider from 'react-slick';
+// import 'slick-carousel/slick/slick.css';
+// import 'slick-carousel/slick/slick-theme.css';
 
 const Banner = () => {
   const settings = {
@@ -17,7 +17,7 @@ const Banner = () => {
 
   return (
     <section className="relative">
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         <div className="bg-blue-500 h-80 flex justify-center items-center">
           <div className="text-center text-white px-4">
             <h1 className="text-4xl font-bold">Welcome to Chill Gamer</h1>
@@ -36,7 +36,7 @@ const Banner = () => {
             <p className="mt-4 text-lg">Share your thoughts and discover new games!</p>
           </div>
         </div>
-      </Slider>
+      </Slider> */}
     </section>
   );
 };

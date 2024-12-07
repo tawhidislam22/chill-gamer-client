@@ -1,15 +1,33 @@
-import { Link } from "react-router-dom";
-
-
+import { useContext } from "react";
+import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { Tooltip } from 'react-tooltip'
+import defaultProfile from './../../assets/defaultProfile.avif'
 const Navbar = () => {
-    const links=<>
-        <Link to='/'><li><a>Home</a></li></Link>
-        <Link to='/allreviews'><li><a>All Reviews</a></li></Link>
-        <Link to='/addreviews'><li><a>Add Review</a></li></Link>
-        <Link to='/myreviews'><li><a>My Reviews </a></li></Link>
-        <Link to='/login'><li><a>Login</a></li></Link>
-        <Link to='/resister'><li><a>Resister</a></li></Link>
-        
+    const { user,signOutUser } = useContext(AuthContext)
+    const handleSignOut=()=>{
+        signOutUser()
+        .then(()=>{
+            
+        })
+        .catch(error=>{
+            
+        })
+    }
+    const links = <>
+        <Link className="text-lg font-semibold" to='/'><li><a>Home</a></li></Link>
+        {
+            user ? <>
+                <NavLink className="text-lg font-semibold" to='/allreviews'><li><a>All Reviews</a></li></NavLink>
+                <NavLink className="text-lg font-semibold" to='/addreviews'><li><a>Add Review</a></li></NavLink>
+                <NavLink className="text-lg font-semibold" to='/myreviews'><li><a>My Reviews </a></li></NavLink>
+            </> : <>
+                <NavLink className="text-lg font-semibold" to='/login'><li><a>Login</a></li></NavLink>
+                <NavLink className="text-lg font-semibold" to='/resister'><li><a>Resister</a></li></NavLink>
+
+            </>
+        }
+
     </>
     return (
         <div className="navbar bg-base-100">
@@ -40,11 +58,26 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {links}
-                    
+
                 </ul>
             </div>
             <div className="navbar-end">
-                <a className="btn">Button</a>
+                {
+                    user ?
+                        <div className="flex justify-center items-center">
+                            
+                            <img className="rounded-full  w-16 border-2 border-purple-600 cursor-pointer"
+                                data-tooltip-id="my-tooltip"
+                                data-tooltip-content={user?.displayName }
+                                data-tooltip-place="top"
+                                alt=""
+                                src={user?user.photoURL?user.photoURL:defaultProfile:defaultProfile} />
+                            <Tooltip id="my-tooltip" />
+                            <Link onClick={handleSignOut} to='/login' className="ml-2 btn">Sign Out</Link>
+                        </div>
+                        :
+                        <Link to="/login" className="btn">Login</Link>
+                }
             </div>
         </div>
     );

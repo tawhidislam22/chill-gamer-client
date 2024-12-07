@@ -1,21 +1,28 @@
 
 import React, { useEffect, useState } from 'react';
-import Banner from '../components/Banner';
-import ReviewCard from '../components/ReviewCard';
+
+
 import axios from 'axios';
+import Banner from './Banner';
+import ReviewCard from './ReviewCard';
 
 const Home = () => {
   const [highestRatedGames, setHighestRatedGames] = useState([]);
   
-  // Fetch highest rated games from API (adjust based on your backend)
+  useEffect(()=>{
+    fetch('http://localhost:5000/games')
+    .then(res=>res.json())
+    .then(data=>setHighestRatedGames(data))
+  },[])
  
 
   return (
     <div>
-      {/* Banner Section */}
-      <Banner />
 
-      {/* Highest Rated Games Section */}
+      
+      <Banner></Banner>
+
+      
       <section className="py-12 bg-gray-900 text-white">
         <div className="container mx-auto text-center mb-8">
           <h2 className="text-3xl font-semibold">Highest Rated Games</h2>
@@ -23,7 +30,7 @@ const Home = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
           {highestRatedGames.map((game) => (
-            <ReviewCard key={game._id} game={game} />
+            <ReviewCard key={game.id} game={game} />
           ))}
         </div>
       </section>

@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const AddReviews = () => {
+    const {user}=useContext(AuthContext)
+    const navigate=useNavigate()
     const handleSubmit =  (e) => {
         e.preventDefault();
         const form=e.target;
@@ -25,6 +31,13 @@ const AddReviews = () => {
           .then(res=>res.json())
           .then(data=>{
             console.log(data)
+            Swal.fire({
+              title: "Your Review Added!",
+              text: "Please Checked The My Review Page!",
+              icon: "success"
+            });
+            e.target.reset()
+            navigate('/')
           })
     
           
@@ -126,7 +139,7 @@ const AddReviews = () => {
             <input
               type="text"
               name='name'
-              
+              value={user?.displayName}
               className="w-full px-4 py-2 rounded bg-gray-700 text-white cursor-not-allowed"
             />
           </div>
@@ -135,7 +148,7 @@ const AddReviews = () => {
             <input
               type="email"
               name='email'
-              
+              value={user.email}
       
               className="w-full px-4 py-2 rounded bg-gray-700 text-white cursor-not-allowed"
             />

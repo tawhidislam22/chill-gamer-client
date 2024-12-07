@@ -14,7 +14,7 @@ const ReviewCard = ({ game }) => {
         <p className="text-sm mt-2">{game.description}</p>
         <div className="flex justify-between items-center mt-4">
           <span className="text-yellow-400">{game.rating} ★</span>
-          <Link to={`/review/${game._id}`} className="text-blue-400 hover:underline">
+          <Link to={`/gameDetails/${game.id}`} className="text-blue-400 hover:underline">
             Explore Details
           </Link>
         </div>

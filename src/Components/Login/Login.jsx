@@ -19,6 +19,7 @@ const Login = () => {
 
         signInUser(email, password)
             .then(res => {
+                
                 form.target.reset()
                 navigate('/')
 

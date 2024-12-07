@@ -19,6 +19,9 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ReviewDetails from './Components/ReviewDetail/ReviewDetails.jsx';
 import UpdateReview from './Components/UpdateReview/UpdateReview.jsx';
+import Home from './Components/Home/Home.jsx';
+import GameDetails from './Components/GameDetails/GameDetails.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -26,6 +29,10 @@ const router = createBrowserRouter([
     element: <Root></Root>,
     errorElement:<ErrorPage></ErrorPage>,
     children:[
+      {
+        path:"/",
+        element:<Home></Home>
+      },
       {
         path:"/login",
         element:<Login></Login>
@@ -49,12 +56,17 @@ const router = createBrowserRouter([
       {
         path:"/details/:id",
         element:<ReviewDetails></ReviewDetails>,
-        loader:(params)=>fetch(`http://localhost:5000/allgames/${params.id}`)
+        loader:({params})=>fetch(`http://localhost:5000/allgames/${params.id}`)
+      },
+      {
+        path:"/gameDetails/:id",
+        element:<GameDetails></GameDetails>,
+        loader:({params})=>fetch(`http://localhost:5000/games/${params.id}`)
       },
       {
         path:"/update/:id",
         element:<UpdateReview></UpdateReview>,
-        loader:(params)=>fetch(`http://localhost:5000/allgames/${params.id}`)
+        loader:({params})=>fetch(`http://localhost:5000/allgames/${params.id}`)
       }
     ]
   },
@@ -66,5 +78,6 @@ createRoot(document.getElementById('root')).render(
     <RouterProvider router={router} />
     </AuthProvider>
     <ToastContainer />
+    
   </StrictMode>,
 )
