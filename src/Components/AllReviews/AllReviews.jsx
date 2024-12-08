@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaSortAmountDown, FaSortAmountUp } from 'react-icons/fa';
 import ClipLoader from 'react-spinners/ClipLoader';
-
+import 'animate.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const AllReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,6 +22,14 @@ const AllReviews = () => {
             setLoading(false)
         }
     )
+  }, []);
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: 'ease-in-out', 
+      once: false,
+      mirror: true 
+    });
   }, []);
 
   // Handle Sorting
@@ -94,7 +104,7 @@ const AllReviews = () => {
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredReviews.map((review) => (
-            <div
+            <div data-aos="slide-up"
               key={review._id}
               className="bg-white shadow-lg rounded-lg overflow-hidden"
             >
@@ -114,7 +124,7 @@ const AllReviews = () => {
                 {/* Explore Details */}
                 <button
                   onClick={() => navigate(`/details/${review._id}`)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded  animate__animated animate__bounce animate__pulse animate__infinite"
                 >
                   Explore Details
                 </button>

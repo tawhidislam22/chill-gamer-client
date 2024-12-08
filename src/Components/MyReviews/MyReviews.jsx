@@ -4,14 +4,16 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-import MyReview from './MyReview';
+import { Fade } from 'react-awesome-reveal';
 import Swal from "sweetalert2";
+
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useContext(AuthContext);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
+
   useEffect(() => {
     setLoading(true);
     fetch('http://localhost:5000/allgames')
@@ -27,8 +29,8 @@ const MyReviews = () => {
   }, []);
 
   const userReviews = user ? reviews.filter((review) => review.email === user.email) : [];
-  const handleDelete = id=> {
-        
+
+  const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -37,31 +39,26 @@ const MyReviews = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!"
-  }).then((result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
-        
-          fetch(`http://localhost:5000/allgames/${id}`, {
-              method: "DELETE"
-          })
-              .then(res => res.json())
-              .then(data => {
-                  if (data.deletedCount > 0) {
-                      const newReviews=reviews.filter(review=>review._id!==id)
-                      setReviews(newReviews)
-                      Swal.fire({
-                          title: "Deleted!",
-                          text: "Your file has been deleted.",
-                          icon: "success"
-                      });
-                  }
-              })
+        fetch(`http://localhost:5000/allgames/${id}`, {
+          method: "DELETE"
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.deletedCount > 0) {
+              const newReviews = reviews.filter(review => review._id !== id);
+              setReviews(newReviews);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your review has been deleted.",
+                icon: "success"
+              });
+            }
+          });
       }
-  });
-    
-      
-      
+    });
   };
-  
 
   if (loading) {
     return (
@@ -79,48 +76,52 @@ const MyReviews = () => {
     <div className="max-w-6xl mx-auto p-8">
       <h2 className="text-3xl font-bold mb-6 text-center">My Reviews</h2>
       {userReviews.length === 0 ? (
-      <p className="text-center">You have no reviews yet.</p>
-    ) : (
-      <div className="overflow-x-auto">
-          <table className="min-w-full bg-white shadow-md rounded">
-            <thead>
-              <tr>
-                <th className="px-4 py-2 border">Game Title</th>
-                <th className="px-4 py-2 border">Rating</th>
-                <th className="px-4 py-2 border">Year</th>
-                <th className="px-4 py-2 border">Genre</th>
-                <th className="px-4 py-2 border">Actions</th>
-              </tr>
-            </thead>
-             <tbody>
-            {userReviews.map((review) => (
-              <tr key={review.id} className="hover:bg-gray-100">
-                <td className="px-4 py-2 border">{review.title}</td>
-                <td className="px-4 py-2 border">{review.rating}</td>
-                <td className="px-4 py-2 border">{review.year}</td>
-                <td className="px-4 py-2 border">{review.genre}</td>
-                <td className="px-4 py-2 border">
-                  <button
-                    onClick={() => navigate(`/update/${review._id}`)}
-                    className="bg-green-500 text-white px-4 py-2 rounded mr-2 hover:bg-green-600"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDelete(review._id)}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-          </table>
-        </div>
-
-      
-    )}
+        <Fade >
+          <p className="text-center">You have no reviews yet.</p>
+        </Fade>
+      ) : (
+        <Fade>
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white shadow-md rounded">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 border">Game Title</th>
+                  <th className="px-4 py-2 border">Rating</th>
+                  <th className="px-4 py-2 border">Year</th>
+                  <th className="px-4 py-2 border">Genre</th>
+                  <th className="px-4 py-2 border">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {userReviews.map((review) => (
+                 
+                    <tr className="hover:bg-gray-100">
+                      <td className="px-4 py-2 border">{review.title}</td>
+                      <td className="px-4 py-2 border">{review.rating}</td>
+                      <td className="px-4 py-2 border">{review.year}</td>
+                      <td className="px-4 py-2 border">{review.genre}</td>
+                      <td className="px-4 py-2 border">
+                        <button
+                          onClick={() => navigate(`/update/${review._id}`)}
+                          className="bg-green-500 text-white px-4 py-2 rounded mr-2 hover:bg-green-600"
+                        >
+                          Update
+                        </button>
+                        <button
+                          onClick={() => handleDelete(review._id)}
+                          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </Fade>
+      )}
     </div>
   );
 };

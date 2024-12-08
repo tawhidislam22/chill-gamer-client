@@ -1,11 +1,15 @@
 
 import React, { useEffect, useState } from 'react';
 
-
+import Lottie from "lottie-react";
 import axios from 'axios';
 import Banner from './Banner';
 import ReviewCard from './ReviewCard';
-
+import NewsLetter from '../NewsLetter/NewsLetter';
+import LatestReview from './LatestReview';
+import game1 from './../../assets/game1.json'
+import game2 from './../../assets/game2.json'
+import game3 from './../../assets/game3.json'
 const Home = () => {
   const [highestRatedGames, setHighestRatedGames] = useState([]);
   
@@ -14,13 +18,15 @@ const Home = () => {
     .then(res=>res.json())
     .then(data=>setHighestRatedGames(data))
   },[])
- 
+  
 
+  
+ 
   return (
     <div>
 
       
-      <Banner></Banner>
+      <Banner highestRatedGames={highestRatedGames}></Banner>
 
       
       <section className="py-12 bg-gray-900 text-white">
@@ -28,7 +34,7 @@ const Home = () => {
           <h2 className="text-3xl font-semibold">Highest Rated Games</h2>
           <p className="mt-2 text-lg">Explore the top-rated games based on user reviews.</p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {highestRatedGames.map((game) => (
             <ReviewCard key={game.id} game={game} />
           ))}
@@ -37,16 +43,7 @@ const Home = () => {
 
       {/* Extra Sections */}
       <section className="py-12 bg-gray-800 text-white">
-        <div className="container mx-auto text-center mb-8">
-          <h2 className="text-3xl font-semibold">Latest Reviews</h2>
-          <p className="mt-2 text-lg">Check out the latest reviews from the Chill Gamer community.</p>
-        </div>
-        {/* Add some content or dynamically fetch latest reviews */}
-        <div className="flex justify-center space-x-6">
-          <div className="w-64 h-40 bg-gray-700 rounded-lg"></div>
-          <div className="w-64 h-40 bg-gray-700 rounded-lg"></div>
-          <div className="w-64 h-40 bg-gray-700 rounded-lg"></div>
-        </div>
+        <LatestReview></LatestReview>
       </section>
 
       <section className="py-12 bg-gray-700 text-white">
@@ -56,11 +53,18 @@ const Home = () => {
         </div>
         {/* Add trending games content */}
         <div className="flex justify-center space-x-6">
-          <div className="w-64 h-40 bg-gray-600 rounded-lg"></div>
-          <div className="w-64 h-40 bg-gray-600 rounded-lg"></div>
-          <div className="w-64 h-40 bg-gray-600 rounded-lg"></div>
+          <div className="w-64  bg-gray-600 rounded-lg">
+            <Lottie animationData={game1}></Lottie>
+          </div>
+          <div className="w-64  bg-gray-600 rounded-lg">
+          <Lottie animationData={game2}></Lottie>
+          </div>
+          <div className="w-64 bg-gray-600 rounded-lg">
+          <Lottie animationData={game3}></Lottie>
+          </div>
         </div>
       </section>
+      <NewsLetter></NewsLetter>
     </div>
   );
 };

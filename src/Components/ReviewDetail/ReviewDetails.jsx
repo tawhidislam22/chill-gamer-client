@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import {  useNavigate, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
-
+import 'animate.css';
 const ReviewDetails = () => {
   const {user}=useContext(AuthContext)
   const review=useLoaderData()
@@ -60,7 +60,7 @@ const ReviewDetails = () => {
 
   
   return (
-    <div className="max-w-4xl mx-auto p-8">
+    <div className="max-w-4xl mx-auto p-8 transition animate__animated animate__bounce animate__backInRight">
       <h1 className="text-3xl font-bold mb-6">{review.title}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         
@@ -91,7 +91,7 @@ const ReviewDetails = () => {
           {/* Add to Watchlist Button */}
           <button
             onClick={handleAddToWatchlist}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded animate__animated animate__bounce animate__pulse animate__infinite"
           >
             Add to Watchlist
           </button>

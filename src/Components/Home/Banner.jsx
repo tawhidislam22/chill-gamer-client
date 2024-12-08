@@ -1,43 +1,90 @@
+import Marquee from "react-fast-marquee";
+import bannerImage1 from './../../assets/banner1.png'
+import bannerImage2 from './../../assets/banner2.png'
+import bannerImage3 from './../../assets/banner3.png'
+import bannerImage4 from './../../assets/banner4.png'
+import bannerImage5 from './../../assets/banner5.png'
+import bannerImage6 from './../../assets/banner6.png'
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-import React from 'react';
-// import Slider from 'react-slick';
-// import 'slick-carousel/slick/slick.css';
-// import 'slick-carousel/slick/slick-theme.css';
-
-const Banner = () => {
-  const settings = {
+const Banner = ({highestRatedGames}) => {
+  var settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
+    speed: 200,
+    slidesToShow: 2,
+    slidesToScroll: 1
   };
-
   return (
-    <section className="relative">
-      {/* <Slider {...settings}>
-        <div className="bg-blue-500 h-80 flex justify-center items-center">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl font-bold">Welcome to Chill Gamer</h1>
-            <p className="mt-4 text-lg">Explore the world of games and reviews!</p>
+    <div>
+      <section>
+      <Slider {...settings}>
+      <div>
+      <div  className=" w-5/6 mx-auto">
+            <img
+              src={bannerImage1}
+              className="w-full " />
           </div>
-        </div>
-        <div className="bg-green-500 h-80 flex justify-center items-center">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl font-bold">Game Reviews at Your Fingertips</h1>
-            <p className="mt-4 text-lg">Find the best games based on user reviews and ratings.</p>
+      </div>
+      <div>
+      <div  className=" w-5/6 mx-auto">
+            <img
+              src={bannerImage2}
+              className="w-full " />
           </div>
-        </div>
-        <div className="bg-purple-500 h-80 flex justify-center items-center">
-          <div className="text-center text-white px-4">
-            <h1 className="text-4xl font-bold">Join the Community</h1>
-            <p className="mt-4 text-lg">Share your thoughts and discover new games!</p>
+      </div>
+      <div>
+      <div  className=" w-5/6 mx-auto">
+            <img
+              src={bannerImage3}
+              className="w-full " />
           </div>
-        </div>
-      </Slider> */}
-    </section>
+      </div>
+      <div>
+      <div className=" w-5/6 mx-auto">
+            <img
+              src={bannerImage4}
+              className="w-full " />
+          </div>
+      </div>
+      <div>
+      <div  className=" w-5/6 mx-auto">
+            <img
+              src={bannerImage5}
+              className="w-full " />
+          </div>
+      </div>
+      <div>
+      <div className=" w-5/6 mx-auto">
+            <img
+              src={bannerImage6}
+              className="w-full " />
+          </div>
+      </div>
+    </Slider>
+        
+          
+          
+          
+        
+      </section>
+      <section className="my-8">
+        <h2 className="text-2xl font-bold mb-4 text-center">Hot Games</h2>
+        <Marquee pauseOnHover={true} speed={50}>
+          {highestRatedGames.map((brand) => (
+            <img
+              key={brand._id}
+              src={brand.coverImage}
+              alt=''
+              className="h-20 mx-4"
+            />
+          ))}
+        </Marquee>
+        
+      </section>
+    </div>
   );
 };
 
