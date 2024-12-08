@@ -1,12 +1,12 @@
 
 
-import {  useNavigate, useLoaderData } from 'react-router-dom';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 import Swal from 'sweetalert2';
-
+import { Helmet } from "react-helmet";
 const UpdateReview = () => {
 
     const review = useLoaderData()
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -17,7 +17,7 @@ const UpdateReview = () => {
         const rating = form.rating.value;
         const year = form.year.value;
         const genre = form.genre.value;
-        const updatedReview={coverImage,title,description,rating,year,genre}
+        const updatedReview = { coverImage, title, description, rating, year, genre }
         fetch(`http://localhost:5000/allgames/${review._id}`, {
             method: 'PUT',
             headers: {
@@ -25,18 +25,18 @@ const UpdateReview = () => {
             },
             body: JSON.stringify(updatedReview),
         })
-        .then(res=>res.json())
-        .then(data=>{
-            
-            if(data.modifiedCount>0){
-                Swal.fire({
-                    title: "Review Updated Done!",
-                    text: "Please Checked The All Review Page!",
-                    icon: "success"
-                  });
-                  navigate('/myreviews')
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.modifiedCount > 0) {
+                    Swal.fire({
+                        title: "Review Updated Done!",
+                        text: "Please Checked The All Review Page!",
+                        icon: "success"
+                    });
+                    navigate('/myreviews')
+                }
+            })
 
 
     };
@@ -45,6 +45,9 @@ const UpdateReview = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-8">
+            <Helmet>
+                <title>Update Review | Gamer Review</title>
+            </Helmet>
             <h1 className="text-3xl font-bold mb-6 text-center">Update Review</h1>
 
             <form onSubmit={handleUpdate}>
@@ -94,8 +97,8 @@ const UpdateReview = () => {
                             name="year"
                             defaultValue={review.year}
                             className="w-full border px-4 py-2 rounded"
-                            min={2019}
-                            max={2023}
+                            min={2021}
+                            max={2024}
                             required
                         />
                     </div>

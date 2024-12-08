@@ -6,6 +6,7 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import 'animate.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {Helmet} from "react-helmet";
 const AllReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -59,6 +60,9 @@ const AllReviews = () => {
 
   return (
     <div className="max-w-7xl mx-auto p-8">
+      <Helmet>
+        <title>All Reviews | Gamer Review</title>
+      </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center">All Reviews</h2>
 
       {/* Filters */}

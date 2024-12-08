@@ -10,6 +10,7 @@ import LatestReview from './LatestReview';
 import game1 from './../../assets/game1.json'
 import game2 from './../../assets/game2.json'
 import game3 from './../../assets/game3.json'
+import {Helmet} from "react-helmet";
 const Home = () => {
   const [highestRatedGames, setHighestRatedGames] = useState([]);
   
@@ -24,7 +25,9 @@ const Home = () => {
  
   return (
     <div>
-
+      <Helmet>
+        <title>Home | Gamer Review</title>
+      </Helmet>
       
       <Banner highestRatedGames={highestRatedGames}></Banner>
 

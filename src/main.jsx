@@ -22,6 +22,7 @@ import UpdateReview from './Components/UpdateReview/UpdateReview.jsx';
 import Home from './Components/Home/Home.jsx';
 import GameDetails from './Components/GameDetails/GameDetails.jsx';
 import GameWatchList from './Components/GameWatchList/GameWatchList.jsx';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 
 
 const router = createBrowserRouter([
@@ -44,33 +45,32 @@ const router = createBrowserRouter([
       },
       {
         path:"/allreviews",
-        element:<AllReviews></AllReviews>
+        element:<PrivateRoute><AllReviews></AllReviews></PrivateRoute>
       },
       {
         path:"/addreviews",
-        element:<AddReviews></AddReviews>
+        element:<PrivateRoute><AddReviews></AddReviews></PrivateRoute>
       },
       {
         path:"/myreviews",
-        element:<MyReviews></MyReviews>
+        element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
         path:"/mywatchlist",
-        element:<GameWatchList></GameWatchList>
+        element:<PrivateRoute><GameWatchList></GameWatchList></PrivateRoute>
       },
       {
         path:"/details/:id",
-        element:<ReviewDetails></ReviewDetails>,
+        element:<PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:5000/allgames/${params.id}`)
       },
       {
         path:"/gameDetails/:id",
-        element:<GameDetails></GameDetails>,
-        loader:({params})=>fetch(`http://localhost:5000/games/${params.id}`)
+        element:<PrivateRoute><GameDetails></GameDetails></PrivateRoute>,
       },
       {
         path:"/update/:id",
-        element:<UpdateReview></UpdateReview>,
+        element:<PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
         loader:({params})=>fetch(`http://localhost:5000/allgames/${params.id}`)
       }
     ]

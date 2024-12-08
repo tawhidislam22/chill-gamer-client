@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
-import {  useNavigate, useLoaderData } from 'react-router-dom';
+import { useNavigate, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import 'animate.css';
+import {Helmet} from "react-helmet";
 const ReviewDetails = () => {
-  const {user}=useContext(AuthContext)
-  const review=useLoaderData()
+  const { user } = useContext(AuthContext)
+  const review = useLoaderData()
   const navigate = useNavigate();
-  const [watchlist,setWatchlist]=useState([])
-  fetch('http://localhost:5000/watchlist')
-  .then(res=>res.json())
-  .then(data=>setWatchlist(data))
-  const handleAddToWatchlist =  () => {
-    const checked=watchlist.find(w=>w.title===review.title && w.email===review.email)
-    if(checked){
+  const [watchlist, setWatchlist] = useState([])
+  useEffect(() => {
+    fetch('http://localhost:5000/watchlist')
+      .then(res => res.json())
+      .then(data => setWatchlist(data))
+  }, [])
+  const handleAddToWatchlist = () => {
+    const checked = watchlist.find(w => w.title === review.title && w.email === review.email)
+    if (checked) {
       toast.warn('Already added your watch list!', {
         position: "top-center",
         autoClose: 1002,
@@ -24,53 +27,56 @@ const ReviewDetails = () => {
         draggable: true,
         progress: undefined,
         theme: "light",
-        
-        });
 
-    }else{
-      review.email=user.email
-    fetch(`http://localhost:5000/watchlist`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(review),
-    })
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.insertedId){
-        toast.success('🦄 This Game added your watch list!', {
-          position: "top-center",
-          autoClose: 1002,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          
-          });
-      }
-    })
+      });
+
+    } else {
+      review.email = user.email
+      fetch(`http://localhost:5000/watchlist`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(review),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.insertedId) {
+            toast.success('🦄 This Game added your watch list!', {
+              position: "top-center",
+              autoClose: 1002,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+
+            });
+          }
+        })
     }
-    
+
   }
 
-  
 
-  
+
+
   return (
     <div className="max-w-4xl mx-auto p-8 transition animate__animated animate__bounce animate__backInRight">
+      <Helmet>
+        <title>Review Details | Gamer Review</title>
+      </Helmet>
       <h1 className="text-3xl font-bold mb-6">{review.title}</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        
+
         <img
           src={review.coverImage}
           alt=''
           className="w-full h-auto rounded shadow-lg"
         />
 
-       
+
         <div>
           <p className="mb-4 text-lg">
             <strong>Genre:</strong> {review.genre}

@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { Fade } from 'react-awesome-reveal';
 import { AuthContext } from '../AuthProvider/AuthProvider';
-
+import { Helmet } from "react-helmet";
 const GameWatchList = () => {
     const { user } = useContext(AuthContext);
     const [watchlist, setWatchlist] = useState([]);
@@ -50,6 +50,9 @@ const GameWatchList = () => {
     if (loading) {
         return (
             <div className="flex justify-center items-center h-screen">
+                <Helmet>
+        <title>Game WatchList | Gamer Review</title>
+      </Helmet>
                 <ClipLoader color="#00bfff" loading={loading} size={50} />
             </div>
         );
@@ -60,6 +63,9 @@ const GameWatchList = () => {
     if (userWatchList.length === 0) {
         return (
             <div className="flex flex-col justify-center items-center h-screen">
+                <Helmet>
+                    <title>Game WatchList | Gamer Review</title>
+                </Helmet>
                 <Fade>
                     <p className="text-lg text-gray-500 mb-4">Your watchlist is currently empty.</p>
                     <a
@@ -88,23 +94,23 @@ const GameWatchList = () => {
                     </thead>
                     <tbody>
                         {userWatchList.map((item) => (
-                            
-                                <tr>
-                                    
-                                    <td className="border border-gray-300 px-4 py-2">{item.title}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.genre}</td>
-                                    <td className="border border-gray-300 px-4 py-2">{item.year}</td>
-                                    <td className="border border-gray-300 px-4 py-2">
-                                        <button
-                                            onClick={() => handleRemove(item._id)}
-                                            className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded"
-                                        >
-                                            Remove
-                                        </button>
-                                    </td>
-                                   
-                                </tr>
-                           
+
+                            <tr>
+
+                                <td className="border border-gray-300 px-4 py-2">{item.title}</td>
+                                <td className="border border-gray-300 px-4 py-2">{item.genre}</td>
+                                <td className="border border-gray-300 px-4 py-2">{item.year}</td>
+                                <td className="border border-gray-300 px-4 py-2">
+                                    <button
+                                        onClick={() => handleRemove(item._id)}
+                                        className="bg-red-500 hover:bg-red-600 text-white py-1 px-4 rounded"
+                                    >
+                                        Remove
+                                    </button>
+                                </td>
+
+                            </tr>
+
                         ))}
                     </tbody>
                 </table>

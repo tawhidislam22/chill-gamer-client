@@ -5,19 +5,20 @@ import { sendEmailVerification } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Helmet } from "react-helmet";
 const Resister = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [success, setSuccess] = useState(false)
     const { createUser } = useContext(AuthContext)
-    const [showPassword,setShowPassword]=useState(false)
+    const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const handleSubmit = e => {
         e.preventDefault()
         const from = e.target;
         const email = from.email.value;
         const password = from.password.value
-        const name=from.name.value;
-        const photo=from.photo.value;
+        const name = from.name.value;
+        const photo = from.photo.value;
         const terms = from.terms.checked
         if (!terms) {
             setErrorMessage("Please accept our terms and condition")
@@ -29,7 +30,7 @@ const Resister = () => {
         }
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-z])[A-Za-z]{6,}$/;
         if (!passwordRegex.test(password)) {
-            setErrorMessage('At Least one uppercase, one lowercase,one number,one special character');
+            setErrorMessage('At Least one uppercase, one lowercase');
             return;
         }
         if (success) {
@@ -50,19 +51,19 @@ const Resister = () => {
         createUser(email, password)
             .then(res => {
                 setSuccess(true)
-                const creationAt=res.user.metadata.creationTime;
+                const creationAt = res.user.metadata.creationTime;
                 sendEmailVerification(auth.currentUser)
                     .then(() => {
-                        const newUser={name,email,photo,creationAt}
-                        fetch('http://localhost:5000/users',{
-                            method:"POST",
-                            headers:{
-                                "content-type":"application/json"
+                        const newUser = { name, email, photo, creationAt }
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json"
                             },
-                            body:JSON.stringify(newUser)
+                            body: JSON.stringify(newUser)
                         })
-                        .then(res=>res.json())
-                        .then(data=>console.log(data))
+                            .then(res => res.json())
+                            .then(data => console.log(data))
                     })
                 from.reset()
                 navigate('/')
@@ -74,6 +75,9 @@ const Resister = () => {
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Resister | Gamer Review</title>
+            </Helmet>
             <div className="hero-content flex-col ">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Resister now!</h1>
@@ -98,7 +102,7 @@ const Resister = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input name="password" type={showPassword ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
-                            
+
                             <button onClick={() => setShowPassword(!showPassword)} className="btn btn-xs absolute right-2 top-12">
                                 {
                                     showPassword ? <FaEyeSlash></FaEyeSlash> : <FaEye></FaEye>

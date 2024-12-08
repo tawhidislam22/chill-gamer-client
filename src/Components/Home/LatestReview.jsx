@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { Typewriter } from 'react-simple-typewriter';
-import 'animate.css';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 const LatestReview = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,7 +17,15 @@ const LatestReview = () => {
      .then(data=>setReviews(data))
        
   },[])
-  reviews.map(review=>console.log(review.year))
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: 'ease-in-out', 
+      once: false,
+      mirror: true 
+    });
+  }, []);
+  
   const userReviews = reviews.filter((review) => review.year === '2024');
   
 
@@ -28,7 +38,7 @@ const LatestReview = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
+    <div className=" mx-auto p-8">
       <h1 className="text-4xl text-blue-500 font-bold text-center mb-8">
       <Typewriter
         words={['Latest Reviews', 'High Rated Games', 'Hot Picks']}
@@ -43,7 +53,7 @@ const LatestReview = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {userReviews.map((review) => (
-          <div key={review._id} className="bg-white rounded-lg shadow-lg p-4 transition animate__animated animate__bounce animate__backInRight">
+          <div key={review._id} data-aos="zoom-in-up"  className="bg-white rounded-lg shadow-lg p-4 ">
             <img
               src={review.coverImage}
               alt={review.title}

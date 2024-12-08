@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-
+import { Helmet } from "react-helmet";
 const AddReviews = () => {
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -43,6 +43,9 @@ const AddReviews = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white rounded-lg shadow-xl">
+            <Helmet>
+                <title>Add Reviews | Gamer Review</title>
+            </Helmet>
             <h2 className="text-3xl font-extrabold text-center mb-6 text-blue-400">Add Your Game Review</h2>
 
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -102,6 +105,8 @@ const AddReviews = () => {
                     <input
                         type="number"
                         name="year"
+                        min={2021}
+                        max={2024}
                         className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Enter the year of release"
                         required

@@ -5,6 +5,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { toast } from "react-toastify";
+import googleImage from "./../../assets/google.png"
+import { Helmet } from "react-helmet";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
@@ -19,7 +21,7 @@ const Login = () => {
 
         signInUser(email, password)
             .then(res => {
-                
+
                 form.target.reset()
                 navigate('/')
 
@@ -29,30 +31,30 @@ const Login = () => {
             })
 
     }
-    const handleForgetPassword=()=>{
-        const email=emailRef.current.value;
-        if(!email){
+    const handleForgetPassword = () => {
+        const email = emailRef.current.value;
+        if (!email) {
             setErrorMessage('Please provided a valid email')
         }
-        else{
-            sendPasswordResetEmail(auth,email)
-            .then(()=>{
-                toast.error('password reset email send', {
-                    position: "top-center",
-                    autoClose: 1000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-    
-                });
-                
-            })
-            .catch(error=>{
-                setErrorMessage(error.message)
-            })
+        else {
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    toast.error('password reset email send', {
+                        position: "top-center",
+                        autoClose: 1000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+
+                    });
+
+                })
+                .catch(error => {
+                    setErrorMessage(error.message)
+                })
         }
     }
     const handleGoogleSignIn = () => {
@@ -66,6 +68,9 @@ const Login = () => {
     }
     return (
         <div className="hero bg-base-200 min-h-screen">
+            <Helmet>
+                <title>Login | Gamer Review</title>
+            </Helmet>
             <div className="hero-content flex-col">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl font-bold">Login now!</h1>
@@ -84,7 +89,7 @@ const Login = () => {
                             <label className="label">
                                 <span className="label-text">Password</span>
                             </label>
-                            <input name="password"  type={showPassword ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
+                            <input name="password" type={showPassword ? 'text' : 'password'} placeholder="password" className="input input-bordered" required />
                             <label className="label">
                                 <a href="#" onClick={handleForgetPassword} className="label-text-alt link link-hover">Forgot password?</a>
                             </label>
@@ -105,7 +110,7 @@ const Login = () => {
                         {
                             errorMessage && <p className="text-red-600">{errorMessage}</p>
                         }
-                        <Link className="flex gap-2 border-2 p-1 rounded-md" onClick={handleGoogleSignIn} ><img className="w-8" src="" alt="" /> LogIn with google</Link>
+                        <Link className="flex gap-2 border-2 p-1 rounded-md" onClick={handleGoogleSignIn} ><img className="w-8" src={googleImage} alt="" /> LogIn with google</Link>
                     </form>
                 </div>
             </div>

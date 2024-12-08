@@ -6,7 +6,8 @@ import ClipLoader from 'react-spinners/ClipLoader';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Fade } from 'react-awesome-reveal';
 import Swal from "sweetalert2";
-
+import { key } from 'localforage';
+import {Helmet} from "react-helmet";
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -74,6 +75,9 @@ const MyReviews = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-8">
+      <Helmet>
+        <title>My Review | Gamer Review</title>
+      </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center">My Reviews</h2>
       {userReviews.length === 0 ? (
         <Fade >
