@@ -59,7 +59,7 @@ const AllReviews = () => {
     : reviews;
 
   return (
-    <div className="max-w-7xl mx-auto p-8">
+    <div className="max-w-7xl mx-auto p-8 dark:bg-gray-900 dark:text-white">
       <Helmet>
         <title>All Reviews | Gamer Review</title>
       </Helmet>

@@ -6,7 +6,7 @@ const ReviewCard = ({ game }) => {
   
   return (
     <Fade>
-    <div className="bg-gray-800 text-white rounded-lg shadow-md overflow-hidden">
+    <div className=" text-gray-900 dark:bg-gray-900 dark:text-white  rounded-lg shadow-md overflow-hidden">
       <img
         src={game.coverImage}
         alt={game.title}

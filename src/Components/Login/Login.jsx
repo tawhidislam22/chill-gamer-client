@@ -67,7 +67,7 @@ const Login = () => {
             })
     }
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-screen dark:bg-gray-900 dark:text-white">
             <Helmet>
                 <title>Login | Gamer Review</title>
             </Helmet>

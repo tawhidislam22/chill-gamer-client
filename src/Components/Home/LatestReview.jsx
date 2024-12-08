@@ -38,7 +38,7 @@ const LatestReview = () => {
   }
 
   return (
-    <div className=" mx-auto p-8">
+    <div className=" mx-auto p-8 dark:bg-gray-900 dark:text-white">
       <h1 className="text-4xl text-blue-500 font-bold text-center mb-8">
       <Typewriter
         words={['Latest Reviews', 'High Rated Games', 'Hot Picks']}

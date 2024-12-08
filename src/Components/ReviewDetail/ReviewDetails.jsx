@@ -63,7 +63,7 @@ const ReviewDetails = () => {
 
 
   return (
-    <div className="max-w-4xl mx-auto p-8 transition animate__animated animate__bounce animate__backInRight">
+    <div className="max-w-4xl dark:bg-gray-900 dark:text-white mx-auto p-8 transition animate__animated animate__bounce animate__backInRight">
       <Helmet>
         <title>Review Details | Gamer Review</title>
       </Helmet>

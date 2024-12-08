@@ -62,7 +62,7 @@ const GameWatchList = () => {
 
     if (userWatchList.length === 0) {
         return (
-            <div className="flex flex-col justify-center items-center h-screen">
+            <div className="flex flex-col justify-center items-center h-screen dark:bg-gray-900 dark:text-white">
                 <Helmet>
                     <title>Game WatchList | Gamer Review</title>
                 </Helmet>

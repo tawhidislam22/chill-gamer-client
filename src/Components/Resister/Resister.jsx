@@ -74,7 +74,7 @@ const Resister = () => {
             })
     }
     return (
-        <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-screen dark:bg-gray-900 dark:text-white">
             <Helmet>
                 <title>Resister | Gamer Review</title>
             </Helmet>

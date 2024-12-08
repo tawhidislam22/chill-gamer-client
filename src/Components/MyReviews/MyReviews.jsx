@@ -74,7 +74,7 @@ const MyReviews = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-8">
+    <div className="max-w-6xl mx-auto p-8 dark:bg-gray-900 dark:text-white">
       <Helmet>
         <title>My Review | Gamer Review</title>
       </Helmet>

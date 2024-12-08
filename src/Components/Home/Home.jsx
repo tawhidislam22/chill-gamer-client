@@ -24,7 +24,7 @@ const Home = () => {
   
  
   return (
-    <div>
+    <div className='dark:bg-gray-900 dark:text-white'>
       <Helmet>
         <title>Home | Gamer Review</title>
       </Helmet>
@@ -32,7 +32,7 @@ const Home = () => {
       <Banner highestRatedGames={highestRatedGames}></Banner>
 
       
-      <section className="py-12 bg-gray-900 text-white">
+      <section className="py-12 text-gray-900 bg-white">
         <div className="container mx-auto text-center mb-8">
           <h2 className="text-3xl font-semibold">Highest Rated Games</h2>
           <p className="mt-2 text-lg">Explore the top-rated games based on user reviews.</p>
@@ -55,7 +55,7 @@ const Home = () => {
           <p className="mt-2 text-lg">Discover the most talked-about games right now.</p>
         </div>
         {/* Add trending games content */}
-        <div className="flex justify-center space-x-6">
+        <div className="flex flex-col md:flex-row  justify-center  space-x-6">
           <div className="w-64  bg-gray-600 rounded-lg">
             <Lottie animationData={game1}></Lottie>
           </div>

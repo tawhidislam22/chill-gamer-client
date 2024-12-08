@@ -7,8 +7,15 @@ const googleProvider=new GoogleAuthProvider()
 const AuthProvider = ({children}) => {
     const [user,setUser]=useState(null)
     const [loading,setLoading]=useState(true)
-    
-    
+    const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+    useEffect(() => {
+        document.documentElement.classList.remove('light', 'dark');
+        document.documentElement.classList.add(theme);
+        localStorage.setItem('theme', theme);
+      }, [theme]);
+      const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+      };
     const createUser=(email,password)=>{
         setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
@@ -39,7 +46,8 @@ const AuthProvider = ({children}) => {
         googleSignIn,
         user,
         loading,
-        
+        theme, 
+        toggleTheme
 
     }
     return (

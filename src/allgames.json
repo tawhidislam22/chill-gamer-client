@@ -1,0 +1,191 @@
+[
+    {
+      "_id": "1",
+      "title": "The Witcher 3: Wild Hunt",
+      "description": "An open-world RPG with stunning visuals and a compelling story.",
+      "coverImage": "https://i.ibb.co/wQM1CX8/The-Witcher-3.jpg",
+      "rating": 9.8,
+      "releaseYear": 2019,
+      "genre": "RPG"
+    },
+    {
+      "_id": "2",
+      "title": "Red Dead Redemption 2",
+      "description": "An epic tale of life in America’s unforgiving heartland.",
+      "coverImage": "https://i.ibb.co/jyMV5B4/Red-Dead-Redemption-2.jpg",
+      "rating": 9.7,
+      "releaseYear": 2020,
+      "genre": "Action"
+    },
+    {
+      "_id": "3",
+      "title": "God of War",
+      "description": "A deep and emotional journey of Kratos and his son Atreus.",
+      "coverImage": "https://i.ibb.co/rZh5Mfn/God-of-War.jpg",
+      "rating": 9.6,
+      "releaseYear": 2022,
+      "genre": "Adventure"
+    },
+    {
+      "_id": "4",
+      "title": "The Legend of Zelda: Breath of the Wild",
+      "description": "A groundbreaking adventure in an open-world setting.",
+      "coverImage": "https://i.ibb.co/fGyngRW/Breath-of-the-Wild.jpg",
+      "rating": 9.9,
+      "releaseYear": 2023,
+      "genre": "Adventure"
+    },
+    {
+      "_id": "5",
+      "title": "Elden Ring",
+      "description": "A fantasy action-RPG from the creators of Dark Souls.",
+      "coverImage": "https://i.ibb.co/C7x7vZm/Elden-Ring.jpg",
+      "rating": 9.5,
+      "releaseYear": 2022,
+      "genre": "RPG"
+    },
+    {
+      "_id": "6",
+      "title": "Cyberpunk 2077",
+      "description": "An open-world action-adventure set in a dystopian future.",
+      "coverImage": "https://i.ibb.co/Wg9SZJ1/Cyberpunk-2077.jpg",
+      "rating": 9.0,
+      "releaseYear": 2020,
+      "genre": "Action"
+    },
+    {
+      "_id": "7",
+      "title": "God of War Ragnarök",
+      "description": "A Norse mythology-inspired action-adventure game.",
+      "coverImage": "https://i.ibb.co/C916vLL/God-of-War-Ragnarok.jpg",
+      "rating": 9.6,
+      "releaseYear": 2022,
+      "genre": "Action-Adventure"
+    },
+    {
+      "_id": "8",
+      "title": "Horizon Forbidden West",
+      "description": "A futuristic action RPG set in a post-apocalyptic world.",
+      "coverImage": "https://i.ibb.co/LCS35HK/Horizon-Forbidden-West.jpg",
+      "rating": 9.2,
+      "releaseYear": 2022,
+      "genre": "Action RPG"
+    },
+    {
+      "_id": "9",
+      "title": "Grand Theft Auto V",
+      "description": "A sandbox open-world game with multiple playable characters.",
+      "coverImage": "https://i.ibb.co/SNzGtWT/Grand-Theft-Auto-V.jpg",
+      "rating": 9.5,
+      "releaseYear": 2019,
+      "genre": "Action-Adventure"
+    },
+    {
+      "_id": "10",
+      "title": "Assassin's Creed Valhalla",
+      "description": "A Viking-themed action RPG with open-world exploration.",
+      "coverImage": "https://i.ibb.co/jVCmP0S/Assassins-Creed-Valhalla.jpg",
+      "rating": 8.8,
+      "releaseYear": 2020,
+      "genre": "Action RPG"
+    },
+    {
+      "_id": "11",
+      "title": "Minecraft",
+      "description": "A sandbox game that allows creativity and exploration.",
+      "coverImage": "https://i.ibb.co/JmQkKXP/Minecraft.jpg",
+      "rating": 9.3,
+      "releaseYear": 2022,
+      "genre": "Sandbox"
+    },
+    {
+      "_id": "12",
+      "title": "Stardew Valley",
+      "description": "A relaxing farming simulator with RPG elements.",
+      "coverImage": "https://i.ibb.co/Sn2SHt3/Stardew-Valley.jpg",
+      "rating": 9.4,
+      "releaseYear": 2023,
+      "genre": "Simulation"
+    },
+    {
+      "_id": "13",
+      "title": "Dark Souls III",
+      "description": "A challenging action RPG in a dark, immersive world.",
+      "coverImage": "https://i.ibb.co/y5rBPQF/Dark-Souls-III.jpg",
+      "rating": 9.0,
+      "releaseYear": 2023,
+      "genre": "RPG"
+    },
+    {
+      "_id": "14",
+      "title": "Sekiro: Shadows Die Twice",
+      "description": "A samurai action-adventure game with challenging combat.",
+      "coverImage": "https://i.ibb.co/s90Cvw8/Sekiro.jpg",
+      "rating": 9.2,
+      "releaseYear": 2019,
+      "genre": "Action-Adventure"
+    },
+    {
+      "_id": "15",
+      "title": "Overwatch",
+      "description": "A team-based first-person shooter with unique heroes.",
+      "coverImage": "https://i.ibb.co/dpJqZ8P/Overwatch.jpg",
+      "rating": 9.1,
+      "releaseYear": 2020,
+      "genre": "Shooter"
+    },
+    {
+      "_id": "16",
+      "title": "The Last of Us Part II",
+      "description": "A story-driven action-adventure game with emotional depth.",
+      "coverImage": "https://i.ibb.co/LNv7XYG/The-Last-of-Us-II.jpg",
+      "rating": 9.5,
+      "releaseYear": 2020,
+      "genre": "Action-Adventure"
+    },
+    {
+      "_id": "17",
+      "title": "Control",
+      "description": "A supernatural action-adventure game with a mysterious story.",
+      "coverImage": "https://i.ibb.co/fXT3m3B/Control.jpg",
+      "rating": 8.7,
+      "releaseYear": 2019,
+      "genre": "Action-Adventure"
+    },
+    {
+      "_id": "18",
+      "title": "Mass Effect Legendary Edition",
+      "description": "A remastered trilogy of the epic sci-fi RPG series.",
+      "coverImage": "https://i.ibb.co/1d9gp40/Mass-Effect.jpg",
+      "rating": 9.4,
+      "releaseYear": 2021,
+      "genre": "RPG"
+    },
+    {
+      "_id": "19",
+      "title": "Spider-Man: Miles Morales",
+      "description": "A superhero action game with stunning visuals and fluid gameplay.",
+      "coverImage": "https://i.ibb.co/S35Xs6Q/Spider-Man-Miles-Morales.jpg",
+      "rating": 9.0,
+      "releaseYear": 2020,
+      "genre": "Action-Adventure"
+    },
+    {
+      "_id": "20",
+      "title": "Divinity: Original Sin 2",
+      "description": "A critically acclaimed tactical RPG with deep storytelling.",
+      "coverImage": "https://i.ibb.co/dtPqknX/Divinity-Original-Sin-2.jpg",
+      "rating": 9.6,
+      "releaseYear": 2021,
+      "genre": "RPG"
+    },
+    {
+      "_id": "21",
+      "title": "Fortnite",
+      "description": "A battle royale game with building mechanics and colorful visuals.",
+      "coverImage": "https://i.ibb.co/WHZGBBn/Fortnite.jpg",
+      "rating": 8.5,
+      "releaseYear": 2022,
+      "genre": "Shooter"
+    }
+  ]

@@ -42,7 +42,7 @@ const AddReviews = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-8 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white rounded-lg shadow-xl">
+        <div className="max-w-4xl mx-auto p-8  text-gray-900 rounded-lg shadow-xl dark:bg-gray-900 dark:text-white">
             <Helmet>
                 <title>Add Reviews | Gamer Review</title>
             </Helmet>
