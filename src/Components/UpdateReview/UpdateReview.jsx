@@ -44,7 +44,8 @@ const UpdateReview = () => {
 
 
     return (
-        <div className="max-w-4xl mx-auto p-8 dark:bg-gray-900 dark:text-white">
+        <div className='dark:bg-gray-900 dark:text-gray-400'>
+            <div className="max-w-4xl bg-slate-200 mx-auto p-8 dark:bg-gray-800 ">
             <Helmet>
                 <title>Update Review | Gamer Review</title>
             </Helmet>
@@ -54,12 +55,12 @@ const UpdateReview = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {/* Game Title */}
                     <div>
-                        <label className="block text-lg font-semibold mb-2">Game Title</label>
+                        <label className="block  text-lg font-semibold mb-2">Game Title</label>
                         <input
                             type="text"
                             name="title"
                             defaultValue={review.title}
-                            className="w-full border px-4 py-2 rounded"
+                            className="w-full border dark:bg-gray-900 px-4 py-2 rounded"
                             required
                         />
                     </div>
@@ -71,7 +72,7 @@ const UpdateReview = () => {
                             type="text"
                             name="coverImage"
                             defaultValue={review.coverImage}
-                            className="w-full border px-4 py-2 rounded"
+                            className="w-full border dark:bg-gray-900 px-4 py-2 rounded"
                             required
                         />
                     </div>
@@ -83,7 +84,7 @@ const UpdateReview = () => {
                             type="text"
                             name="rating"
                             defaultValue={review.rating}
-                            className="w-full border px-4 py-2 rounded"
+                            className="w-full dark:bg-gray-900 border px-4 py-2 rounded"
 
                             required
                         />
@@ -96,7 +97,7 @@ const UpdateReview = () => {
                             type="number"
                             name="year"
                             defaultValue={review.year}
-                            className="w-full border px-4 py-2 rounded"
+                            className="w-full dark:bg-gray-900 border px-4 py-2 rounded"
                             min={2021}
                             max={2024}
                             required
@@ -109,7 +110,7 @@ const UpdateReview = () => {
                         <select
                             name="genre"
                             defaultValue={review.genre}
-                            className="w-full border px-4 py-2 rounded"
+                            className="w-full dark:bg-gray-900 border px-4 py-2 rounded"
                             required
                         >
                             <option value="Action">Action</option>
@@ -126,7 +127,7 @@ const UpdateReview = () => {
                         <textarea
                             name="description"
                             defaultValue={review.description}
-                            className="w-full border px-4 py-2 rounded"
+                            className="w-full dark:bg-gray-900 border px-4 py-2 rounded"
                             rows="5"
                             required
                         />
@@ -138,7 +139,7 @@ const UpdateReview = () => {
                         <input
                             type="text"
                             value={review.name}
-                            className="w-full border px-4 py-2 rounded bg-gray-100 cursor-not-allowed"
+                            className="w-full border px-4 py-2 rounded dark:bg-gray-900 bg-gray-100 cursor-not-allowed"
                             readOnly
                         />
                     </div>
@@ -149,7 +150,7 @@ const UpdateReview = () => {
                         <input
                             type="email"
                             value={review.email}
-                            className="w-full border px-4 py-2 rounded bg-gray-100 cursor-not-allowed"
+                            className="w-full border px-4 py-2 rounded dark:bg-gray-900 bg-gray-100 cursor-not-allowed"
                             readOnly
                         />
                     </div>
@@ -158,11 +159,12 @@ const UpdateReview = () => {
                 {/* Submit Button */}
                 <button
                     type="submit"
-                    className="mt-6 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-6 rounded"
+                    className="mt-6 bg-blue-500 hover:bg-blue-600 w-full text-white font-bold py-2 px-6 rounded"
                 >
                     Update Review
                 </button>
             </form>
+        </div>
         </div>
     );
 };

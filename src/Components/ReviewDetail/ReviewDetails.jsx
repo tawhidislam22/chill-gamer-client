@@ -29,6 +29,7 @@ const ReviewDetails = () => {
         theme: "light",
 
       });
+      navigate('/')
 
     } else {
       review.email = user.email
@@ -42,7 +43,7 @@ const ReviewDetails = () => {
         .then(res => res.json())
         .then(data => {
           if (data.insertedId) {
-            toast.success('🦄 This Game added your watch list!', {
+            toast.success(' This Game added your watch list!', {
               position: "top-center",
               autoClose: 1002,
               hideProgressBar: false,
@@ -51,8 +52,9 @@ const ReviewDetails = () => {
               draggable: true,
               progress: undefined,
               theme: "light",
-
+              
             });
+            navigate('/')
           }
         })
     }
@@ -63,7 +65,8 @@ const ReviewDetails = () => {
 
 
   return (
-    <div className="max-w-4xl dark:bg-gray-900 dark:text-white mx-auto p-8 transition animate__animated animate__bounce animate__backInRight">
+    <div className='dark:bg-gray-900 dark:text-white'>
+      <div className="max-w-4xl bg-slate-200 dark:bg-gray-700 dark:text-white mx-auto p-8 transition animate__animated animate__bounce animate__backInRight">
       <Helmet>
         <title>Review Details | Gamer Review</title>
       </Helmet>
@@ -103,6 +106,7 @@ const ReviewDetails = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

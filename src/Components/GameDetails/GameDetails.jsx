@@ -46,6 +46,7 @@ const ReviewDetails = () => {
         position: 'top-center',
         autoClose: 1000,
       });
+      navigate('/')
     } else {
       const watchlistEntry = { ...review, email: user.email };
 
@@ -64,6 +65,7 @@ const ReviewDetails = () => {
               position: 'top-center',
               autoClose: 1000,
             });
+            navigate('/')
           }
         })
         .catch((error) => console.error('Failed to add to watchlist:', error));
@@ -79,7 +81,8 @@ const ReviewDetails = () => {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-8 dark:bg-gray-900 dark:text-white transition animate__animated animate__bounce animate__backInRight">
+    <div className='w-full   dark:bg-gray-900 dark:text-white'>
+      <div className="max-w-4xl mx-auto p-8 bg-slate-200 dark:bg-gray-700 dark:text-white transition animate__animated animate__bounce animate__backInRight">
       <Helmet>
         <title>Review Details | Gamer Review</title>
       </Helmet>
@@ -114,6 +117,7 @@ const ReviewDetails = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

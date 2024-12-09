@@ -43,7 +43,7 @@ const AddReviews = () => {
 
     return (
        <div className="w-full  dark:bg-gray-900 dark:text-white">
-         <div className="max-w-4xl mx-auto p-8 bg-gray-800  text-gray-400 rounded-lg shadow-xl">
+         <div className="max-w-4xl mx-auto p-8 bg-gray-200 dark:bg-gray-800 text-gray-700  dark:text-gray-400 rounded-lg shadow-xl">
             <Helmet>
                 <title>Add Reviews | Gamer Review</title>
             </Helmet>
@@ -56,7 +56,7 @@ const AddReviews = () => {
                     <input
                         type="text"
                         name="coverImage"
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Enter the image URL"
                         required
                     />
@@ -68,7 +68,7 @@ const AddReviews = () => {
                     <input
                         type="text"
                         name="title"
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Enter the game title"
                         required
                     />
@@ -79,7 +79,7 @@ const AddReviews = () => {
                     <label className="block mb-2 font-semibold">Review Description:</label>
                     <textarea
                         name="description"
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Share your thoughts about the game"
                         rows="4"
                         required
@@ -92,7 +92,7 @@ const AddReviews = () => {
                     <input
                         type="number"
                         name="rating"
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Enter your rating"
                         min="1"
                         max="10"
@@ -108,7 +108,7 @@ const AddReviews = () => {
                         name="year"
                         min={2021}
                         max={2024}
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         placeholder="Enter the year of release"
                         required
                     />
@@ -119,7 +119,7 @@ const AddReviews = () => {
                     <label className="block mb-2 font-semibold">Genre:</label>
                     <select
                         name="genre"
-                        className="w-full px-4 py-2 rounded bg-gray-700 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700  dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                         required
                     >
                         <option value="">Select a Genre</option>
@@ -138,7 +138,7 @@ const AddReviews = () => {
                         name="name"
                         value={user?.displayName}
                         readOnly
-                        className="w-full px-4 py-2 rounded bg-gray-600 text-gray-400 cursor-not-allowed"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
                     />
                 </div>
 
@@ -150,7 +150,7 @@ const AddReviews = () => {
                         name="email"
                         value={user?.email}
                         readOnly
-                        className="w-full px-4 py-2 rounded bg-gray-600 text-gray-400 cursor-not-allowed"
+                        className="w-full px-4 py-2 rounded bg-slate-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed"
                     />
                 </div>
 

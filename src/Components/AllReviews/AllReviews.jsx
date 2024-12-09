@@ -9,7 +9,7 @@ import 'aos/dist/aos.css';
 import {Helmet} from "react-helmet";
 const AllReviews = () => {
   const [reviews, setReviews] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [filterGenre, setFilterGenre] = useState('');
   const [sortOption, setSortOption] = useState('');
   const navigate = useNavigate();
@@ -110,22 +110,22 @@ const AllReviews = () => {
           {filteredReviews.map((review) => (
             <div data-aos="slide-up"
               key={review._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden"
+              className="bg-white  dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden"
             >
-              {/* Cover Image */}
+              
               <img
                 src={review.coverImage}
                 alt={review.title}
                 className="w-full h-40 object-cover"
               />
               <div className="p-4">
-                {/* Title */}
+                
                 <h3 className="text-xl font-bold mb-2">{review.title}</h3>
-                {/* Rating */}
+                
                 <p className="mb-2">Rating: {review.rating}/10</p>
-                {/* Genre */}
+                
                 <p className="mb-2">Genre: {review.genre}</p>
-                {/* Explore Details */}
+                
                 <button
                   onClick={() => navigate(`/details/${review._id}`)}
                   className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded  animate__animated animate__bounce animate__pulse animate__infinite"

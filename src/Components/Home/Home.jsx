@@ -55,7 +55,7 @@ const Home = () => {
           <p className="mt-2 text-lg">Discover the most talked-about games right now.</p>
         </div>
         {/* Add trending games content */}
-        <div className="flex flex-col md:flex-row  justify-center  space-x-6">
+        <div className="flex flex-col items-center space-y-6 md:flex-row  justify-center  space-x-6">
           <div className="w-64  bg-slate-100 dark:bg-gray-600 rounded-lg">
             <Lottie animationData={game1}></Lottie>
           </div>

@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import { Fade } from 'react-awesome-reveal';
 import { AuthContext } from '../AuthProvider/AuthProvider';
@@ -80,12 +79,14 @@ const GameWatchList = () => {
     }
 
     return (
-        <div className="max-w-5xl mx-auto p-8">
+        <div className='dark:bg-gray-900 dark:text-white'>
+            <div className="max-w-5xl mx-auto p-8 '">
             <Fade >
                 <h1 className="text-4xl font-bold mb-6 text-center">My Watchlist</h1>
-                <table className="w-full border-collapse border border-gray-300">
+                <div className='overflow-x-auto'>
+                <table className="w-full border-collapse border border-gray-300 dark:bg-gray-800 dark:text-white">
                     <thead>
-                        <tr className="bg-gray-100">
+                        <tr className="bg-gray-100 dark:bg-gray-800 dark:text-white">
                             <th className="border border-gray-300 px-4 py-2">Game Title</th>
                             <th className="border border-gray-300 px-4 py-2">Genre</th>
                             <th className="border border-gray-300 px-4 py-2">Year</th>
@@ -114,7 +115,9 @@ const GameWatchList = () => {
                         ))}
                     </tbody>
                 </table>
+                </div>
             </Fade>
+        </div>
         </div>
     );
 };

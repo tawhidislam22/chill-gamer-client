@@ -53,21 +53,21 @@ const LatestReview = () => {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {userReviews.map((review) => (
-          <div key={review._id} data-aos="zoom-in-up"  className="bg-white rounded-lg shadow-lg p-4 ">
+          <div key={review._id} data-aos="zoom-in-up"  className="bg-white dark:bg-gray-800 dark:text-white rounded-lg shadow-lg p-4 ">
             <img
               src={review.coverImage}
               alt={review.title}
               className="w-full h-48 object-cover rounded"
             />
             <h2 className="text-xl font-bold mt-4">{review.title}</h2>
-            <p className="text-gray-600 mt-2 truncate">{review.description}</p>
-            <p className="text-gray-800 mt-2">
+            <p className="text-gray-600 dark:text-gray-400 mt-2 truncate">{review.description}</p>
+            <p className="text-gray-800 dark:text-gray-400 mt-2">
               <strong>Rating:</strong> {review.rating} / 10
             </p>
-            <p className="text-gray-800">
+            <p className="text-gray-800 dark:text-gray-400">
               <strong>Genre:</strong> {review.genre}
             </p>
-            <p className="text-gray-800">
+            <p className="text-gray-800 dark:text-gray-400">
               <strong>Year:</strong> {review.year}
             </p>
             <Link

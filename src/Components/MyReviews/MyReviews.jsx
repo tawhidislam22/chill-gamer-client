@@ -74,19 +74,20 @@ const MyReviews = () => {
   }
 
   return (
-    <div className="max-w-6xl mx-auto p-8 dark:bg-gray-900 dark:text-white">
+    <div className='dark:bg-gray-900 dark:text-white'>
+      <div className="max-w-6xl mx-auto p-8 ">
       <Helmet>
         <title>My Review | Gamer Review</title>
       </Helmet>
       <h2 className="text-3xl font-bold mb-6 text-center">My Reviews</h2>
       {userReviews.length === 0 ? (
         <Fade >
-          <p className="text-center">You have no reviews yet.</p>
+          <p className="text-center mb-80">You have no reviews yet.</p>
         </Fade>
       ) : (
         <Fade>
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white shadow-md rounded">
+          <div className="overflow-x-auto ">
+            <table className="min-w-full bg-white shadow-md rounded dark:bg-gray-800 dark:text-white">
               <thead>
                 <tr>
                   <th className="px-4 py-2 border">Game Title</th>
@@ -99,7 +100,7 @@ const MyReviews = () => {
               <tbody>
                 {userReviews.map((review) => (
                  
-                    <tr className="hover:bg-gray-100">
+                    <tr className="hover:bg-gray-100 hover:dark:bg-gray-500">
                       <td className="px-4 py-2 border">{review.title}</td>
                       <td className="px-4 py-2 border">{review.rating}</td>
                       <td className="px-4 py-2 border">{review.year}</td>
@@ -126,6 +127,7 @@ const MyReviews = () => {
           </div>
         </Fade>
       )}
+    </div>
     </div>
   );
 };

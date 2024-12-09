@@ -86,14 +86,14 @@ const Navbar = () => {
   );
 
   return (
-    <div className={location.pathname==="/"?"navbar w-full py-4 shadow   bg-base-100 dark:bg-gray-900 dark:text-white":"navbar w-full py-6 shadow bg-base-100 dark:bg-gray-900 dark:text-white"}>
+    <div className={location.pathname==="/"?"navbar w-full py-4 shadow   bg-base-100 dark:bg-gray-900 ":"navbar w-full py-6 shadow bg-base-100 dark:bg-gray-900 "}>
       {/* Navbar Start */}
       <div className="navbar-start">
         <div className="dropdown ">
           <label
             tabIndex={0}
             role="button"
-            className="btn btn-ghost lg:hidden"
+            className="btn dark:text-gray-500 btn-ghost lg:hidden"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +117,7 @@ const Navbar = () => {
             {links}
           </ul>
         </div>
-        <Link className="hidden md:block font-semibold btn btn-ghost text-2xl">
+        <Link className="hidden md:block font-semibold text-purple-600 btn btn-ghost text-2xl">
           Game Review
         </Link>
       </div>
