@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Outlet, NavLink, Link, useLocation } from "react-router-dom";
+import {  NavLink, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import defaultProfile from "../../assets/defaultProfile.avif";
@@ -87,7 +87,7 @@ const Navbar = () => {
 
   return (
     <div className={location.pathname==="/"?"navbar w-full py-4 shadow   bg-base-100 dark:bg-gray-900 ":"navbar w-full py-6 shadow bg-base-100 dark:bg-gray-900 "}>
-      {/* Navbar Start */}
+      
       <div className="navbar-start">
         <div className="dropdown ">
           <label
@@ -122,12 +122,12 @@ const Navbar = () => {
         </Link>
       </div>
 
-      {/* Navbar Center */}
+      
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 space-x-4">{links}</ul>
       </div>
 
-      {/* Navbar End */}
+      
       <div className="navbar-end">
         <div className="flex items-center">
           {user ? (
