@@ -14,7 +14,7 @@ const ReviewDetails = () => {
 
   // Fetch all games
   useEffect(() => {
-    fetch('http://localhost:5000/games')
+    fetch('https://chill-gamer-server-chi-lime.vercel.app/games')
       .then((res) => res.json())
       .then((data) => setGames(data))
       .catch((error) => console.error('Failed to fetch games:', error));
@@ -22,7 +22,7 @@ const ReviewDetails = () => {
 
   // Fetch watchlist
   useEffect(() => {
-    fetch('http://localhost:5000/watchlist')
+    fetch('https://chill-gamer-server-chi-lime.vercel.app/watchlist')
       .then((res) => res.json())
       .then((data) => setWatchlist(data))
       .catch((error) => console.error('Failed to fetch watchlist:', error));
@@ -49,7 +49,7 @@ const ReviewDetails = () => {
     } else {
       const watchlistEntry = { ...review, email: user.email };
 
-      fetch('http://localhost:5000/watchlist', {
+      fetch('https://chill-gamer-server-chi-lime.vercel.app/watchlist', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

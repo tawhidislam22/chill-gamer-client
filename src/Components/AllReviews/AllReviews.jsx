@@ -17,7 +17,7 @@ const AllReviews = () => {
   
   useEffect(() => {
    
-        fetch('http://localhost:5000/allgames')
+        fetch('https://chill-gamer-server-chi-lime.vercel.app/allgames')
         .then(res=>res.json())
         .then(data=>{setReviews(data)
             setLoading(false)
@@ -73,7 +73,7 @@ const AllReviews = () => {
           <select
             value={sortOption}
             onChange={(e) => handleSort(e.target.value)}
-            className="px-4 py-2 rounded bg-gray-200"
+            className="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700"
           >
             <option value="">Select</option>
             <option value="ratingAsc">Rating (Low to High)</option>
@@ -89,7 +89,7 @@ const AllReviews = () => {
           <select
             value={filterGenre}
             onChange={(e) => handleFilter(e.target.value)}
-            className="px-4 py-2 rounded bg-gray-200"
+            className="px-4 py-2 rounded bg-gray-200 dark:bg-gray-700"
           >
             <option value="">All Genres</option>
             <option value="Action">Action</option>

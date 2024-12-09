@@ -17,7 +17,7 @@ const MyReviews = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('http://localhost:5000/allgames')
+    fetch('https://chill-gamer-server-chi-lime.vercel.app/allgames')
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);
@@ -42,7 +42,7 @@ const MyReviews = () => {
       confirmButtonText: "Yes, delete it!"
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/allgames/${id}`, {
+        fetch(`https://chill-gamer-server-chi-lime.vercel.app/allgames/${id}`, {
           method: "DELETE"
         })
           .then(res => res.json())

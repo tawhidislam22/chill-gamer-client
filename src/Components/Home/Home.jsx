@@ -15,7 +15,7 @@ const Home = () => {
   const [highestRatedGames, setHighestRatedGames] = useState([]);
   
   useEffect(()=>{
-    fetch('http://localhost:5000/games')
+    fetch('https://chill-gamer-server-chi-lime.vercel.app/games')
     .then(res=>res.json())
     .then(data=>setHighestRatedGames(data))
   },[])
@@ -24,7 +24,7 @@ const Home = () => {
   
  
   return (
-    <div className='dark:bg-gray-900 dark:text-white'>
+    <div className='bg-white dark:bg-gray-900 dark:text-white'>
       <Helmet>
         <title>Home | Gamer Review</title>
       </Helmet>
@@ -32,7 +32,7 @@ const Home = () => {
       <Banner highestRatedGames={highestRatedGames}></Banner>
 
       
-      <section className="py-12 text-gray-900 bg-white">
+      <section className="py-12 text-gray-900  dark:bg-gray-900 dark:text-white  bg-white">
         <div className="container mx-auto text-center mb-8">
           <h2 className="text-3xl font-semibold">Highest Rated Games</h2>
           <p className="mt-2 text-lg">Explore the top-rated games based on user reviews.</p>
@@ -45,29 +45,31 @@ const Home = () => {
       </section>
 
       {/* Extra Sections */}
-      <section className="py-12 bg-gray-800 text-white">
+      <section className="py-12 dark:bg-gray-900 dark:text-white">
         <LatestReview></LatestReview>
       </section>
 
-      <section className="py-12 bg-gray-700 text-white">
+      <section className="py-12 dark:bg-gray-900 dark:text-white ">
         <div className="container mx-auto text-center mb-8">
           <h2 className="text-3xl font-semibold">Trending Games</h2>
           <p className="mt-2 text-lg">Discover the most talked-about games right now.</p>
         </div>
         {/* Add trending games content */}
         <div className="flex flex-col md:flex-row  justify-center  space-x-6">
-          <div className="w-64  bg-gray-600 rounded-lg">
+          <div className="w-64  bg-slate-100 dark:bg-gray-600 rounded-lg">
             <Lottie animationData={game1}></Lottie>
           </div>
-          <div className="w-64  bg-gray-600 rounded-lg">
+          <div className="w-64 bg-slate-100  dark:bg-gray-600 rounded-lg">
           <Lottie animationData={game2}></Lottie>
           </div>
-          <div className="w-64 bg-gray-600 rounded-lg">
+          <div className="w-64 bg-slate-100 dark:bg-gray-600 rounded-lg">
           <Lottie animationData={game3}></Lottie>
           </div>
         </div>
       </section>
+      <div className='p-8 '>
       <NewsLetter></NewsLetter>
+      </div>
     </div>
   );
 };

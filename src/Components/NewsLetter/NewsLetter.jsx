@@ -34,7 +34,7 @@ const NewsLetter = () => {
   };
 
   return (
-    <section className="mt-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-12 rounded-lg">
+    <section className="mt-12 bg-gradient-to-r from-purple-500 to-blue-500 text-white py-20 rounded-lg">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
         <p className="mb-6">

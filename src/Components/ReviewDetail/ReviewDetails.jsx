@@ -11,7 +11,7 @@ const ReviewDetails = () => {
   const navigate = useNavigate();
   const [watchlist, setWatchlist] = useState([])
   useEffect(() => {
-    fetch('http://localhost:5000/watchlist')
+    fetch('https://chill-gamer-server-chi-lime.vercel.app/watchlist')
       .then(res => res.json())
       .then(data => setWatchlist(data))
   }, [])
@@ -32,7 +32,7 @@ const ReviewDetails = () => {
 
     } else {
       review.email = user.email
-      fetch(`http://localhost:5000/watchlist`, {
+      fetch(`https://chill-gamer-server-chi-lime.vercel.app/watchlist`, {
         method: 'POST',
         headers: {
           'content-type': 'application/json',

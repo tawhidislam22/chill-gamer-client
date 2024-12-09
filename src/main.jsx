@@ -29,49 +29,49 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
-    errorElement:<ErrorPage></ErrorPage>,
-    children:[
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
       {
-        path:"/",
-        element:<Home></Home>
+        path: "/",
+        element: <Home></Home>
       },
       {
-        path:"/login",
-        element:<Login></Login>
+        path: "/login",
+        element: <Login></Login>
       },
       {
-        path:"/resister",
-        element:<Resister></Resister>
+        path: "/resister",
+        element: <Resister></Resister>
       },
       {
-        path:"/allreviews",
-        element:<PrivateRoute><AllReviews></AllReviews></PrivateRoute>
+        path: "/allreviews",
+        element: <PrivateRoute><AllReviews></AllReviews></PrivateRoute>
       },
       {
-        path:"/addreviews",
-        element:<PrivateRoute><AddReviews></AddReviews></PrivateRoute>
+        path: "/addreviews",
+        element: <PrivateRoute><AddReviews></AddReviews></PrivateRoute>
       },
       {
-        path:"/myreviews",
-        element:<PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+        path: "/myreviews",
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
       },
       {
-        path:"/mywatchlist",
-        element:<PrivateRoute><GameWatchList></GameWatchList></PrivateRoute>
+        path: "/mywatchlist",
+        element: <PrivateRoute><GameWatchList></GameWatchList></PrivateRoute>
       },
       {
-        path:"/details/:id",
-        element:<PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/allgames/${params.id}`)
+        path: "/details/:id",
+        element: <PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://chill-gamer-server-chi-lime.vercel.app/allgames/${params.id}`)
       },
       {
-        path:"/gameDetails/:id",
-        element:<PrivateRoute><GameDetails></GameDetails></PrivateRoute>,
+        path: "/gameDetails/:id",
+        element: <PrivateRoute><GameDetails></GameDetails></PrivateRoute>,
       },
       {
-        path:"/update/:id",
-        element:<PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
-        loader:({params})=>fetch(`http://localhost:5000/allgames/${params.id}`)
+        path: "/update/:id",
+        element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://chill-gamer-server-chi-lime.vercel.app/allgames/${params.id}`)
       }
     ]
   },
@@ -80,9 +80,9 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
     <ToastContainer />
-    
+
   </StrictMode>,
 )

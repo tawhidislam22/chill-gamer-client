@@ -11,7 +11,7 @@ const GameWatchList = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://localhost:5000/watchlist')
+        fetch('https://chill-gamer-server-chi-lime.vercel.app/watchlist')
             .then((res) => res.json())
             .then((data) => {
                 setWatchlist(data);
@@ -34,7 +34,7 @@ const GameWatchList = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/watchlist/${id}`, { method: 'DELETE' })
+                fetch(`https://chill-gamer-server-chi-lime.vercel.app/watchlist/${id}`, { method: 'DELETE' })
                     .then((res) => res.json())
                     .then((data) => {
                         if (data.deletedCount > 0) {

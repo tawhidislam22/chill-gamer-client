@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
-import { Outlet, NavLink, Link } from "react-router-dom";
+import { Outlet, NavLink, Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { Tooltip } from "react-tooltip";
 import defaultProfile from "../../assets/defaultProfile.avif";
 
 const Navbar = () => {
   const { user, signOutUser, theme, toggleTheme } = useContext(AuthContext);
-
+  const location=useLocation()
   const handleSignOut = () => {
     signOutUser()
       .then(() => {
@@ -86,10 +86,10 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar w-full bg-base-100 dark:bg-gray-900 dark:text-white">
+    <div className={location.pathname==="/"?"navbar w-full py-4 shadow   bg-base-100 dark:bg-gray-900 dark:text-white":"navbar w-full py-6 shadow bg-base-100 dark:bg-gray-900 dark:text-white"}>
       {/* Navbar Start */}
       <div className="navbar-start">
-        <div className="dropdown">
+        <div className="dropdown ">
           <label
             tabIndex={0}
             role="button"
@@ -136,7 +136,8 @@ const Navbar = () => {
                 className="rounded-full w-10 h-10 border-2 border-purple-600 cursor-pointer"
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content={user?.displayName}
-                data-tooltip-place="left"
+                data-tooltip-place="top"
+              
                 alt="User Profile"
                 src={user ? (user.photoURL ? user.photoURL : defaultProfile) : defaultProfile}
               />

@@ -18,7 +18,7 @@ const UpdateReview = () => {
         const year = form.year.value;
         const genre = form.genre.value;
         const updatedReview = { coverImage, title, description, rating, year, genre }
-        fetch(`http://localhost:5000/allgames/${review._id}`, {
+        fetch(`https://chill-gamer-server-chi-lime.vercel.app/allgames/${review._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

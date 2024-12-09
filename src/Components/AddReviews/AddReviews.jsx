@@ -21,7 +21,7 @@ const AddReviews = () => {
         const newGame = { coverImage, title, description, rating, year, genre, name, email };
         console.log(newGame);
 
-        fetch('http://localhost:5000/allgames', {
+        fetch('https://chill-gamer-server-chi-lime.vercel.app/allgames', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -42,7 +42,8 @@ const AddReviews = () => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-8  text-gray-900 rounded-lg shadow-xl dark:bg-gray-900 dark:text-white">
+       <div className="w-full  dark:bg-gray-900 dark:text-white">
+         <div className="max-w-4xl mx-auto p-8 bg-gray-800  text-gray-400 rounded-lg shadow-xl">
             <Helmet>
                 <title>Add Reviews | Gamer Review</title>
             </Helmet>
@@ -162,6 +163,7 @@ const AddReviews = () => {
                 </button>
             </form>
         </div>
+       </div>
     );
 };
 

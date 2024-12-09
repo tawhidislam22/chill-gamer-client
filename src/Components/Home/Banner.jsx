@@ -13,13 +13,15 @@ const Banner = ({highestRatedGames}) => {
   var settings = {
     dots: true,
     infinite: true,
-    speed: 200,
     slidesToShow: 2,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true
   };
   return (
     <div>
-      <section>
+      <section className="pt-7">
       <Slider {...settings}>
       <div>
       <div  className=" w-5/6 mx-auto">
@@ -72,6 +74,7 @@ const Banner = ({highestRatedGames}) => {
       </section>
       <section className="my-8">
         <h2 className="text-2xl font-bold mb-4 text-center">Hot Games</h2>
+        <div>
         <Marquee pauseOnHover={true} speed={50}>
           {highestRatedGames.map((brand) => (
             <img
@@ -82,6 +85,7 @@ const Banner = ({highestRatedGames}) => {
             />
           ))}
         </Marquee>
+        </div>
         
       </section>
     </div>

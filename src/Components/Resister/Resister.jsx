@@ -55,7 +55,7 @@ const Resister = () => {
                 sendEmailVerification(auth.currentUser)
                     .then(() => {
                         const newUser = { name, email, photo, creationAt }
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://chill-gamer-server-chi-lime.vercel.app/users', {
                             method: "POST",
                             headers: {
                                 "content-type": "application/json"
