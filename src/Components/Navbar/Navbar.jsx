@@ -42,22 +42,6 @@ const Navbar = () => {
             className={({ isActive }) =>
               `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
             }
-            to="/addreviews"
-          >
-            <li>Add Review</li>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-            }
-            to="/myreviews"
-          >
-            <li>My Reviews</li>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-            }
             to="/mywatchlist"
           >
             <li>Game WatchList</li>

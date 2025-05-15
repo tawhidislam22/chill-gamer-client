@@ -25,6 +25,7 @@ import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import Testimonials from './Components/Testimonial/Testimonial.jsx';
 import DashboardLayout from './Components/Dashboard/DashboardLayout.jsx';
 import Profile from './Components/Dashboard/Common/Profile.jsx';
+import Statistics from './Components/Dashboard/Statistics.jsx';
 
 
 const router = createBrowserRouter([
@@ -49,18 +50,9 @@ const router = createBrowserRouter([
         path: "/allreviews",
         element: <PrivateRoute><AllReviews></AllReviews></PrivateRoute>
       },
-      {
-        path: "/addreviews",
-        element: <PrivateRoute><AddReviews></AddReviews></PrivateRoute>
-      },
-      {
-        path: "/myreviews",
-        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
-      },
-      {
-        path: "/mywatchlist",
-        element: <PrivateRoute><GameWatchList></GameWatchList></PrivateRoute>
-      },
+      
+      
+      
       {
         path: "/details/:id",
         element: <PrivateRoute><ReviewDetails></ReviewDetails></PrivateRoute>,
@@ -86,9 +78,25 @@ const router = createBrowserRouter([
     element:<DashboardLayout></DashboardLayout>,
     children:[
       {
+        index:true,
+        element:<Statistics></Statistics>
+      },
+      {
         path:'profile',
         element:<Profile></Profile>
-      }
+      },
+      {
+        path: "addreviews",
+        element: <PrivateRoute><AddReviews></AddReviews></PrivateRoute>
+      },
+      {
+        path: "myreviews",
+        element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+      },
+      {
+        path: "mywatchlist",
+        element: <PrivateRoute><GameWatchList></GameWatchList></PrivateRoute>
+      },
     ]
   }
 ]);
