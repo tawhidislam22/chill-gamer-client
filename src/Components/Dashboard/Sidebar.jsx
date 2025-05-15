@@ -90,6 +90,11 @@ const Sidebar = () => {
             label='My Watch list'
             address='/dashboard/mywatchlist'
           />
+          <MenuItem
+            icon={FcSettings}
+            label='Testimonial'
+            address='/dashboard/testimonial'
+          />
           
             </nav>
           </div>

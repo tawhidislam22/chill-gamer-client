@@ -66,10 +66,6 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
         loader: ({ params }) => fetch(`https://chill-gamer-server-chi-lime.vercel.app/allgames/${params.id}`)
-      },
-      {
-        path:'/testimonial',
-        element:<Testimonials></Testimonials>
       }
     ]
   },
@@ -96,7 +92,12 @@ const router = createBrowserRouter([
       {
         path: "mywatchlist",
         element: <PrivateRoute><GameWatchList></GameWatchList></PrivateRoute>
-      },
+      }
+      ,
+      {
+        path:'testimonial',
+        element:<Testimonials></Testimonials>
+      }
     ]
   }
 ]);

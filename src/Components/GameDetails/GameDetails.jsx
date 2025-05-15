@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'animate.css';
-import {Helmet} from "react-helmet";
+import { Helmet } from "react-helmet";
 import useAuth from '../Hooks/useAuth';
 const ReviewDetails = () => {
   const { user } = useAuth();
@@ -38,7 +38,7 @@ const ReviewDetails = () => {
     }
 
     const isAlreadyInWatchlist = watchlist.some(
-      (w) => w.title === review.title && w.email === user.email
+      (w) => w.title === review.title && w.email === user?.email
     );
 
     if (isAlreadyInWatchlist) {
@@ -48,7 +48,7 @@ const ReviewDetails = () => {
       });
       navigate('/')
     } else {
-      const watchlistEntry = { ...review, email: user.email };
+      const watchlistEntry = { ...review, email: user?.email };
 
       fetch('https://chill-gamer-server-chi-lime.vercel.app/watchlist', {
         method: 'POST',
@@ -59,16 +59,23 @@ const ReviewDetails = () => {
       })
         .then((res) => res.json())
         .then((data) => {
+          console.log('Server response:', data);
           if (data.insertedId) {
             setWatchlist((prev) => [...prev, watchlistEntry]);
             toast.success('Game added to your watchlist!', {
               position: 'top-center',
               autoClose: 1000,
             });
-            navigate('/')
+            navigate('/');
+          } else {
+            toast.error('Failed to add to watchlist');
           }
         })
-        .catch((error) => console.error('Failed to add to watchlist:', error));
+        .catch((error) => {
+          console.error('Failed to add to watchlist:', error);
+          toast.error('Server error: ' + error.message);
+        });
+
     }
   };
 
@@ -83,41 +90,41 @@ const ReviewDetails = () => {
   return (
     <div className='w-full   dark:bg-gray-900 dark:text-white'>
       <div className="max-w-4xl mx-auto p-8 bg-slate-200 dark:bg-gray-700 dark:text-white transition animate__animated animate__bounce animate__backInRight">
-      <Helmet>
-        <title>Review Details | Gamer Review</title>
-      </Helmet>
-      <h1 className="text-3xl font-bold mb-6">{review.title}</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <img
-          src={review.coverImage}
-          alt={review.title}
-          className="w-full h-auto rounded shadow-lg"
-        />
-        <div>
-          <p className="mb-4 text-lg">
-            <strong>Genre:</strong> {review.genre}
-          </p>
-          <p className="mb-4 text-lg">
-            <strong>Rating:</strong> {review.rating}/10
-          </p>
-          <p className="mb-4 text-lg">
-            <strong>Year:</strong> {review.year}
-          </p>
-          <p className="mb-4 text-lg">
-            <strong>Reviewed By:</strong> {review.name} ({review.email})
-          </p>
-          <p className="mb-4 text-lg">
-            <strong>Description:</strong> {review.description}
-          </p>
-          <button
-            onClick={handleAddToWatchlist}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded animate__animated animate__bounce animate__pulse animate__infinite"
-          >
-            Add to Watchlist
-          </button>
+        <Helmet>
+          <title>Review Details | Gamer Review</title>
+        </Helmet>
+        <h1 className="text-3xl font-bold mb-6">{review.title}</h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <img
+            src={review.coverImage}
+            alt={review.title}
+            className="w-full h-auto rounded shadow-lg"
+          />
+          <div>
+            <p className="mb-4 text-lg">
+              <strong>Genre:</strong> {review.genre}
+            </p>
+            <p className="mb-4 text-lg">
+              <strong>Rating:</strong> {review.rating}/10
+            </p>
+            <p className="mb-4 text-lg">
+              <strong>Year:</strong> {review.year}
+            </p>
+            <p className="mb-4 text-lg">
+              <strong>Reviewed By:</strong> {review.name} ({review.email})
+            </p>
+            <p className="mb-4 text-lg">
+              <strong>Description:</strong> {review.description}
+            </p>
+            <button
+              onClick={handleAddToWatchlist}
+              className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded animate__animated animate__bounce animate__pulse animate__infinite"
+            >
+              Add to Watchlist
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   );
 };
