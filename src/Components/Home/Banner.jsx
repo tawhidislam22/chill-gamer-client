@@ -24,45 +24,45 @@ const Banner = ({highestRatedGames}) => {
       <section className="pt-7">
       <Slider {...settings}>
       <div>
-      <div  className=" w-full max-h-80 mx-auto">
+      <div  className=" w-full  mx-auto">
             <img
               src={bannerImage1}
-              className="w-full " />
+              className="w-full max-h-80 object-cover" />
           </div>
       </div>
       <div>
-      <div  className=" w-5/6 max-h-80 mx-auto">
+      <div  className=" w-5/6  mx-auto">
             <img
               src={bannerImage2}
-              className="w-full " />
+              className="w-full max-h-80 object-cover" />
           </div>
       </div>
       <div>
-    <div  className=" w-5/6 max-h-80 mx-auto">
+    <div  className=" w-5/6  mx-auto">
             <img
               src={bannerImage3}
-              className="w-full " />
+              className="w-full max-h-80 object-cover" />
           </div>
       </div>
       <div>
-      <div className=" w-5/6 max-h-80 mx-auto">
+      <div className=" w-5/6  mx-auto">
             <img
               src={bannerImage4}
-              className="w-full " />
+              className="w-full max-h-80 object-cover" />
           </div>
       </div>
       <div>
-      <div  className=" w-5/6 max-h-80 mx-auto">
+      <div  className=" w-5/6  mx-auto">
             <img
               src={bannerImage5}
-              className="w-full " />
+              className="w-full max-h-80 object-cover" />
           </div>
       </div>
       <div>
-      <div className=" w-5/6 max-h-80 mx-auto">
+      <div className=" w-5/6  mx-auto ">
             <img
               src={bannerImage6}
-              className="w-full " />
+              className="w-full max-h-80 object-cover" />
           </div>
       </div>
     </Slider>

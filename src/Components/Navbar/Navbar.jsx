@@ -1,155 +1,113 @@
-import React, { useContext } from "react";
-import {  NavLink, Link, useLocation } from "react-router-dom";
 
+import React from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import defaultProfile from "../../assets/defaultProfile.avif";
 import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
   const { user, signOutUser, theme, toggleTheme } = useAuth();
-  const location=useLocation()
+
   const handleSignOut = () => {
-    signOutUser()
-      .then(() => {
-        // Successfully signed out
-      })
-      .catch((error) => {
-        console.error("Sign out error:", error);
-      });
+    signOutUser().catch((err) => console.error("Logout failed:", err));
   };
 
-  const links = (
-    <>
-      <NavLink
-        className={({ isActive }) =>
-          `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-        }
-        to="/"
-      >
-        <li>Home</li>
-      </NavLink>
-      {user ? (
-        <>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-            }
-            to="/allreviews"
-          >
-            <li>All Reviews</li>
-          </NavLink>
-          
-      
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-            }
-            to="/dashboard"
-          >
-            <li>Dashboard</li>
-          </NavLink>
-        </>
-      ) : (
-        <>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-            }
-            to="/login"
-          >
-            <li>Login</li>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
-            }
-            to="/register"
-          >
-            <li>Register</li>
-          </NavLink>
-        </>
-      )}
-    </>
-  );
+  const navLinks = [
+    { to: "/", label: "Home" },
+    ...(user
+      ? [
+          { to: "/allreviews", label: "All Reviews" },
+          { to: "/dashboard", label: "Dashboard" },
+        ]
+      : [
+          { to: "/login", label: "Login" },
+          { to: "/register", label: "Register" },
+        ]),
+  ];
 
   return (
-    <div className={location.pathname==="/"?"navbar w-full py-4 shadow   bg-base-100 dark:bg-gray-900 ":"navbar w-full py-6 shadow bg-base-100 dark:bg-gray-900 "}>
-      
-      <div className="navbar-start">
-        <div className="dropdown ">
-          <label
-            tabIndex={0}
-            role="button"
-            className="btn dark:text-gray-500 btn-ghost lg:hidden"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />
-            </svg>
-          </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-          >
-            {links}
-          </ul>
-        </div>
-        <Link className="hidden md:block font-semibold text-purple-600 btn btn-ghost text-2xl">
-          Game Review
-        </Link>
-      </div>
+    <>
+      {/* Sticky Navbar */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur border-b border-gray-200 dark:border-gray-700 shadow">
+        <nav className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+          {/* Logo */}
+          <div className="text-2xl font-bold text-purple-700 dark:text-purple-400">
+            <Link to="/">GameReview</Link>
+          </div>
 
-      
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1 space-x-4">{links}</ul>
-      </div>
-
-      
-      <div className="navbar-end">
-        <div className="flex items-center">
-          {user ? (
-            <div className="flex items-center">
-              <img
-                className="rounded-full w-10 h-10 border-2 border-purple-600 cursor-pointer"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={user?.displayName}
-                data-tooltip-place="top"
-              
-                alt="User Profile"
-                src={user ? (user.photoURL ? user.photoURL : defaultProfile) : defaultProfile}
-              />
-              <Tooltip id="my-tooltip" />
-              <button
-                onClick={handleSignOut}
-                className="ml-3  dark:text-white  btn btn-sm btn-outline"
+          {/* Center Nav */}
+          <div className="hidden md:flex space-x-6">
+            {navLinks.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                className={({ isActive }) =>
+                  `text-base font-medium transition ${
+                    isActive
+                      ? "text-purple-600 dark:text-purple-400"
+                      : "text-gray-700 hover:text-purple-500 dark:text-gray-300 dark:hover:text-purple-400"
+                  }`
+                }
               >
-                Sign Out
-              </button>
-            </div>
-          ) : (
-            <Link to="/login" className="btn btn-sm btn-primary">
-              Login
-            </Link>
-          )}
-          <button
-            onClick={toggleTheme}
-            className="ml-3 p-2 rounded focus:outline-none"
-          >
-            {theme === "light" ? "🌙" : "☀️"}
-          </button>
+                {label}
+              </NavLink>
+            ))}
+          </div>
+
+          {/* Right Side */}
+          <div className="flex items-center space-x-4">
+            {user ? (
+              <>
+                <img
+                  src={user.photoURL || defaultProfile}
+                  alt="Profile"
+                  className="w-9 h-9 rounded-full border-2 border-purple-500"
+                  data-tooltip-id="user-tooltip"
+                  data-tooltip-content={user.displayName}
+                />
+                <Tooltip id="user-tooltip" />
+                <button
+                  onClick={handleSignOut}
+                  className="btn btn-sm btn-outline dark:text-white"
+                >
+                  Sign Out
+                </button>
+              </>
+            ) : null}
+
+            <button
+              onClick={toggleTheme}
+              title="Toggle Theme"
+              className="text-xl"
+            >
+              {theme === "light" ? "🌙" : "☀️"}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile nav */}
+        <div className="md:hidden px-4 pb-3 flex flex-wrap gap-4 justify-center">
+          {navLinks.map(({ to, label }) => (
+            <NavLink
+              key={to}
+              to={to}
+              className={({ isActive }) =>
+                `text-base font-medium ${
+                  isActive
+                    ? "text-purple-600 dark:text-purple-400"
+                    : "text-gray-700 hover:text-purple-600 dark:text-gray-300 dark:hover:text-purple-400"
+                }`
+              }
+            >
+              {label}
+            </NavLink>
+          ))}
         </div>
-      </div>
-    </div>
+      </header>
+
+      {/* Spacer to push content below fixed navbar */}
+      <div className="h-[72px]" />
+    </>
   );
 };
 
