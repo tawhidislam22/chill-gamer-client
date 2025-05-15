@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { useNavigate, useLoaderData } from 'react-router-dom';
-import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import 'animate.css';
 import {Helmet} from "react-helmet";
+import useAuth from '../Hooks/useAuth';
 const ReviewDetails = () => {
-  const { user } = useContext(AuthContext)
+  const { user } = useAuth()
   const review = useLoaderData()
   const navigate = useNavigate();
   const [watchlist, setWatchlist] = useState([])

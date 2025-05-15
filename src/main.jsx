@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
-import App from './App.jsx'
 
 import {
   createBrowserRouter,
@@ -16,13 +15,16 @@ import AddReviews from './Components/AddReviews/AddReviews.jsx';
 import MyReviews from './Components/MyReviews/MyReviews.jsx';
 import AuthProvider from './Components/AuthProvider/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 import ReviewDetails from './Components/ReviewDetail/ReviewDetails.jsx';
 import UpdateReview from './Components/UpdateReview/UpdateReview.jsx';
 import Home from './Components/Home/Home.jsx';
 import GameDetails from './Components/GameDetails/GameDetails.jsx';
 import GameWatchList from './Components/GameWatchList/GameWatchList.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
+import Testimonials from './Components/Testimonial/Testimonial.jsx';
+import DashboardLayout from './Components/Dashboard/DashboardLayout.jsx';
+import Profile from './Components/Dashboard/Common/Profile.jsx';
 
 
 const router = createBrowserRouter([
@@ -72,9 +74,23 @@ const router = createBrowserRouter([
         path: "/update/:id",
         element: <PrivateRoute><UpdateReview></UpdateReview></PrivateRoute>,
         loader: ({ params }) => fetch(`https://chill-gamer-server-chi-lime.vercel.app/allgames/${params.id}`)
+      },
+      {
+        path:'/testimonial',
+        element:<Testimonials></Testimonials>
       }
     ]
   },
+  {
+    path:'/dashboard',
+    element:<DashboardLayout></DashboardLayout>,
+    children:[
+      {
+        path:'profile',
+        element:<Profile></Profile>
+      }
+    ]
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

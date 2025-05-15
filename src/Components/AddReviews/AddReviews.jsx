@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import useAuth from "../Hooks/useAuth";
 const AddReviews = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const navigate = useNavigate();
 
     const handleSubmit = (e) => {

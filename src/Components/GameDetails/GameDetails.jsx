@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { AuthContext } from '../AuthProvider/AuthProvider';
 import { toast } from 'react-toastify';
 import 'animate.css';
 import {Helmet} from "react-helmet";
+import useAuth from '../Hooks/useAuth';
 const ReviewDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
   const { id } = useParams();
   const navigate = useNavigate();
 

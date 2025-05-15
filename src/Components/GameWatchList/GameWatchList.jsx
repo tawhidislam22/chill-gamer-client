@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import Swal from 'sweetalert2';
 import { Fade } from 'react-awesome-reveal';
-import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Helmet } from "react-helmet";
+import useAuth from '../Hooks/useAuth';
 const GameWatchList = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const [watchlist, setWatchlist] = useState([]);
     const [loading, setLoading] = useState(true);
 

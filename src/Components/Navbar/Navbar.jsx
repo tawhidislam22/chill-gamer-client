@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import {  NavLink, Link, useLocation } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+
 import { Tooltip } from "react-tooltip";
 import defaultProfile from "../../assets/defaultProfile.avif";
+import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
-  const { user, signOutUser, theme, toggleTheme } = useContext(AuthContext);
+  const { user, signOutUser, theme, toggleTheme } = useAuth();
   const location=useLocation()
   const handleSignOut = () => {
     signOutUser()
@@ -60,6 +61,22 @@ const Navbar = () => {
             to="/mywatchlist"
           >
             <li>Game WatchList</li>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
+            }
+            to="/testimonial"
+          >
+            <li>Testimonial</li>
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              `text-lg font-semibold ${isActive ? "text-blue-500" : ""}`
+            }
+            to="/dashboard"
+          >
+            <li>Dashboard</li>
           </NavLink>
         </>
       ) : (

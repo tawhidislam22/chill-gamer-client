@@ -1,16 +1,16 @@
 import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useContext, useRef, useState } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import {  useRef, useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { toast } from "react-toastify";
 import googleImage from "./../../assets/google.png"
 import { Helmet } from "react-helmet";
+import useAuth from "../Hooks/useAuth";
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
-    const { signInUser, googleSignIn } = useContext(AuthContext)
+    const { signInUser, googleSignIn } = useAuth()
     const navigate = useNavigate('')
     const emailRef = useRef()
     const handleLogin = e => {

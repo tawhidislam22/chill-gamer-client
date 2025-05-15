@@ -3,16 +3,16 @@ import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import ClipLoader from 'react-spinners/ClipLoader';
-import { AuthContext } from '../AuthProvider/AuthProvider';
 import { Fade } from 'react-awesome-reveal';
 import Swal from "sweetalert2";
 import { key } from 'localforage';
 import {Helmet} from "react-helmet";
+import useAuth from '../Hooks/useAuth';
 const MyReviews = () => {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth()
   const navigate = useNavigate();
 
   useEffect(() => {

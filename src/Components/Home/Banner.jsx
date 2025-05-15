@@ -13,7 +13,7 @@ const Banner = ({highestRatedGames}) => {
   var settings = {
     dots: true,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 2000,
@@ -24,42 +24,42 @@ const Banner = ({highestRatedGames}) => {
       <section className="pt-7">
       <Slider {...settings}>
       <div>
-      <div  className=" w-5/6 mx-auto">
+      <div  className=" w-full max-h-80 mx-auto">
             <img
               src={bannerImage1}
               className="w-full " />
           </div>
       </div>
       <div>
-      <div  className=" w-5/6 mx-auto">
+      <div  className=" w-5/6 max-h-80 mx-auto">
             <img
               src={bannerImage2}
               className="w-full " />
           </div>
       </div>
       <div>
-      <div  className=" w-5/6 mx-auto">
+    <div  className=" w-5/6 max-h-80 mx-auto">
             <img
               src={bannerImage3}
               className="w-full " />
           </div>
       </div>
       <div>
-      <div className=" w-5/6 mx-auto">
+      <div className=" w-5/6 max-h-80 mx-auto">
             <img
               src={bannerImage4}
               className="w-full " />
           </div>
       </div>
       <div>
-      <div  className=" w-5/6 mx-auto">
+      <div  className=" w-5/6 max-h-80 mx-auto">
             <img
               src={bannerImage5}
               className="w-full " />
           </div>
       </div>
       <div>
-      <div className=" w-5/6 mx-auto">
+      <div className=" w-5/6 max-h-80 mx-auto">
             <img
               src={bannerImage6}
               className="w-full " />

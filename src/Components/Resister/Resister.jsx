@@ -1,15 +1,15 @@
-import { useContext, useState } from "react";
+import {  useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../AuthProvider/AuthProvider";
 import { sendEmailVerification } from "firebase/auth";
 import { auth } from "../../firebase.init";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import useAuth from "../Hooks/useAuth";
 const Resister = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [success, setSuccess] = useState(false)
-    const { createUser } = useContext(AuthContext)
+    const { createUser } = useAuth()
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
     const handleSubmit = e => {
