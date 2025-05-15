@@ -21,7 +21,7 @@ const Navbar = () => {
         ]
       : [
           { to: "/login", label: "Login" },
-          { to: "/register", label: "Register" },
+          { to: "/resister", label: "Register" },
         ]),
   ];
 

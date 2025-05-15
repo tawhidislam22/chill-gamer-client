@@ -9,13 +9,11 @@ import {
 import Root from './Components/Root/Root.jsx';
 import ErrorPage from './Components/ErrorPage/ErrorPage.jsx';
 import Login from './Components/Login/Login.jsx';
-import Resister from './Components/Resister/Resister.jsx';
 import AllReviews from './Components/AllReviews/AllReviews.jsx';
 import AddReviews from './Components/AddReviews/AddReviews.jsx';
 import MyReviews from './Components/MyReviews/MyReviews.jsx';
 import AuthProvider from './Components/AuthProvider/AuthProvider.jsx';
 import { ToastContainer } from 'react-toastify';
-
 import ReviewDetails from './Components/ReviewDetail/ReviewDetails.jsx';
 import UpdateReview from './Components/UpdateReview/UpdateReview.jsx';
 import Home from './Components/Home/Home.jsx';
@@ -26,6 +24,7 @@ import Testimonials from './Components/Testimonial/Testimonial.jsx';
 import DashboardLayout from './Components/Dashboard/DashboardLayout.jsx';
 import Profile from './Components/Dashboard/Common/Profile.jsx';
 import Statistics from './Components/Dashboard/Statistics.jsx';
+import Register from './Components/Resister/Register.jsx';
 
 
 const router = createBrowserRouter([
@@ -43,8 +42,8 @@ const router = createBrowserRouter([
         element: <Login></Login>
       },
       {
-        path: "/resister",
-        element: <Resister></Resister>
+        path: "/register",
+        element: <Register></Register>
       },
       {
         path: "/allreviews",
