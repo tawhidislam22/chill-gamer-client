@@ -6,10 +6,15 @@ export default {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        xs: { max: "400px" },
+      },
+    },
   },
   plugins: [
     require('daisyui'),
   ],
+  
 }
 
